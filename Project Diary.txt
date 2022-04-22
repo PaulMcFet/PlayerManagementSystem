@@ -1,0 +1,36 @@
+------------------------------------------------------------------------------------------------------------------------
+Project Diary
+------------------------------------------------------------------------------------------------------------------------
+Day one 20/04:
+Brainstormed ideas for projects themed around D&D 
+Ideas included
+-Player Inventory management system
+-Encounter Generators
+-Character Generators
+-An In-game shop for players to buy from
+-A "Build your party" Minigame
+-A player and store inventory management and purchase system 
+
+I decided to settle on the Player Inventory Management system as this could be useful to players and feels fairly straightforward to work on.
+------------------------------------------------------------------------------------------------------------------------
+
+Day Two:
+-Researched existing systems and projects to gain inspiration,
+-Had a look for D&D APIs, Saw that D&D Beyond is working on its own but it is not functional as of yet. 
+-Sought Feedback from Morgan relating to ideas.
+------------------------------------------------------------------------------------------------------------------------
+
+Day Three:
+Created initial ERD and created some basic MySQL to help visualise the end project. 
+
+TTDT
+-User Stories
+-JIRA
+-GITHUB REPO
+-RISK ASSESSMENT
+
+------------------------------------------------------------------------------------------------------------------------
+TTD Over the weekend
+-Rewatch Morgan's Lessons and compound knowledge Focussing on API interactions and Testing
+-Read over examples and framework for project
+-Make first steps in altering framework
