@@ -34,3 +34,29 @@ TTD Over the weekend
 -Rewatch Morgan's Lessons and compound knowledge Focussing on API interactions and Testing
 -Read over examples and framework for project
 -Make first steps in altering framework
+------------------------------------------------------------------------------------------------------------------------
+Day Four 23/04:
+
+Due to familly commitments I could not spend as much time on the project as I would've liked to today but in the time I 
+managed to squeeze in, here's what was done.
+
+-Built Spring Project on Eclipse successfully
+Was having issues getting it to run, found this was due to not configuring the JDBC correctly, attempted multiple times with
+different configurations in application.properties to set up the jdbc connection, however decided to remove the dependency
+for now and return to it at a later date. The dependency is below so that I can copy/paste this back later. 
+
+-Rewatched Morgans Monday lessons to fill in gaps on knowledge.
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-jdbc</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-jdbc</artifactId>
+	</dependency>
+------------------------------------------------------------------------------------------------------------------------
