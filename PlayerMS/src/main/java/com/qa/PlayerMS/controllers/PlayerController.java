@@ -3,7 +3,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/myroute")
-public class MyFirstController {
+public class PlayerController {
 		
 	@GetMapping
 	public String myFirstRoute() {

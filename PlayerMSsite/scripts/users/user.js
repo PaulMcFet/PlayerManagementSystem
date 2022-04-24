@@ -1,9 +1,6 @@
 
 var Inventory = []
 
-
-function 
-
 function Player(Name)
     this.name = Name;
     return output;
@@ -16,7 +13,7 @@ function Character(CharacterName, CharacterClass, SGold, Inventory) {
     this.SGold = SGold;
     this.Inventory = new Inventory;
     this.toString = function() {
-        let output = `${street} "The" \n${city} "With" \n${zipcode}`;
+        let output = `${CharacterName} "The" \n${CharacterClass} "With" \n${SGold}`;
         return output;
     }
 }

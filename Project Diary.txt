@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------------------------------------------------
 Project Diary
 ------------------------------------------------------------------------------------------------------------------------
-Day one 20/04:
+Wednesday 20/04:
 Brainstormed ideas for projects themed around D&D 
 Ideas included
 -Player Inventory management system
@@ -13,14 +13,13 @@ Ideas included
 
 I decided to settle on the Player Inventory Management system as this could be useful to players and feels fairly straightforward to work on.
 ------------------------------------------------------------------------------------------------------------------------
-
-Day Two:
+Thursday:
 -Researched existing systems and projects to gain inspiration,
 -Had a look for D&D APIs, Saw that D&D Beyond is working on its own but it is not functional as of yet. 
 -Sought Feedback from Morgan relating to ideas.
 ------------------------------------------------------------------------------------------------------------------------
 
-Day Three:
+Firday:
 Created initial ERD and created some basic MySQL to help visualise the end project. 
 
 TTDT
@@ -35,7 +34,7 @@ TTD Over the weekend
 -Read over examples and framework for project
 -Make first steps in altering framework
 ------------------------------------------------------------------------------------------------------------------------
-Day Four 23/04:
+Saturday:
 
 Due to familly commitments I could not spend as much time on the project as I would've liked to today but in the time I 
 managed to squeeze in, here's what was done.
@@ -47,8 +46,28 @@ for now and return to it at a later date. The dependency is below so that I can 
 
 -Rewatched Morgans Monday lessons to fill in gaps on knowledge.
 
+------------------------------------------------------------------------------------------------------------------------
+Sunday:
 
+Worked on Front end today from 10:30 until 5pm as my API is returning a Error 404 on returning any 
+information which I will bring to Morgan on monday for assistance.
 
+Utilising a previous exercise and repurposing a lot of the code so that I have a base to jump from. 
+I've currently created:
+-The Character Creation Page
+-The Home Page
+
+Things that cannot be completed right now due to no functional API are; 
+-The Character read page 
+-The inventory page
+-Altering Inventory
+
+Feel good about today and felt like I've gotten a lot done. Focussing on Front end will
+allow me more time later in the week to spend on my back end which is the part I'm struggling to understand most.
+
+After my progress on my Front end today I've decided to spend as much of Monday trying to find the answer for myself
+in the recorded sessions with Morgan, this way he'll be able to assist more colleagues while I work towards 
+fixing the problem myself. If I don't have the problem solved by 1PM on Monday I will reach out.  
 
 ------------------------------------------------------------------------------------------------------------------------
 	<dependency>
