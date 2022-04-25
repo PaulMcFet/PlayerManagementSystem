@@ -1,4 +1,4 @@
-package com.qa.PlayerMS.controllers;
+package com.qa.PlayerMSt;
 
 public class CharcterController {
 

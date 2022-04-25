@@ -1,4 +1,4 @@
-package com.qa.intro_project.configuration;
+package com.qa.PlayerMSt;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
