@@ -11,8 +11,8 @@ public class NewCharacterDTO {
 
 	@NotNull
 	@NotBlank
-	@Size(min = 2, max = 16, message = "Username must have at least 2 characters, but no more than 16")
-	private String username;
+	@Size(min = 2, max = 16, message = "Character name must have at least 2 characters, but no more than 16")
+	private String charactername;
 	
 	@NotNull
 	@Email
@@ -22,12 +22,12 @@ public class NewCharacterDTO {
 		super();
 	}
 
-	public String getUsername() {
-		return username;
+	public String getCharactername() {
+		return charactername;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setCharactername(String charactername) {
+		this.charactername = charactername;
 	}
 
 	public String getEmail() {
@@ -40,7 +40,7 @@ public class NewCharacterDTO {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, username);
+		return Objects.hash(email, charactername);
 	}
 
 	@Override
@@ -52,8 +52,9 @@ public class NewCharacterDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		NewCharacterDTO other = (NewCharacterDTO) obj;
-		return Objects.equals(email, other.email) && Objects.equals(username, other.username);
+		return Objects.equals(email, other.email) && Objects.equals(charactername, other.charactername);
 	}
+
 	
 	
 }

@@ -33,70 +33,58 @@ public class CharacterService {
 		this.modelMapper = modelMapper;
 	}
 
-	public List<CharacterDTO> getUsers() {
-		List<Character> users = CharacterRepository.findAll();
+	public List<CharacterDTO> getCharacters() {
+		List<Character> characters = CharacterRepository.findAll();
 		List<CharacterDTO> dtos = new ArrayList<>();
 		
 		for (Character character : characters) {
 			dtos.add(this.toDTO(character));
 		}
 		return dtos;
-//		return userRepository.findAll()
-//							 .stream()
-//							 .map(this::toDTO)
-//							 .collect(Collectors.toList());
 	}
 	
-	public CharacterDTO getUser(int id) {
-		Optional<Character> user = CharacterRepository.findById(id);
+	public CharacterDTO getCharacter(int id) {
+		Optional<Character> character = CharacterRepository.findById(id);
 		
-		if (user.isPresent()) {
-			return this.toDTO(user.get());
+		if (character.isPresent()) {
+			return this.toDTO(character.get());
 		}
-		throw new EntityNotFoundException("User not found with id " + id);
-//		return this.toDTO(user.orElseThrow(() -> new EntityNotFoundException("User not found with id " + id)));
+		throw new EntityNotFoundException("Character not found with id " + id);
 	}
 	
-	public CharacterDTO createUser(NewCharacterDTO character) {
+	public CharacterDTO createCharacter(NewCharacterDTO character) {
 		Character toSave = this.modelMapper.map(character, Character.class);
-		Character newUser = CharacterRepository.save(toSave);
-		return this.toDTO(newUser);
+		Character newCharacter = CharacterRepository.save(toSave);
+		return this.toDTO(newCharacter);
 	}
 	
 	@Transactional
-	// @Transactional wraps this whole method in a transaction
-	// - if a RuntimeException is thrown, the transaction is rolled back (i.e., the changes to the database are not made)
-	public CharacterDTO updateUser(NewCharacterDTO character, int id) {
-		// Alternate way of retrieving a user, no optionals involved
+	public CharacterDTO updateCharacter(NewCharacterDTO character, int id) {
 		if (CharacterRepository.existsById(id)) {
 			Character savedCharacter = CharacterRepository.getById(id);
-			savedCharacter.setUsername(user.getUsername());
+			savedCharacter.setCharacterName(character.getCharactername());
 			return this.toDTO(savedCharacter);
 		}
-		throw new EntityNotFoundException("User not found with id " + id);
+		throw new EntityNotFoundException("Character not found with id " + id);
 	}
 	
-	public void deleteUser(int id) {
+	public void deleteCharacter(int id) {
 		if (CharacterRepository.existsById(id)) {
 			CharacterRepository.deleteById(id);
 			return;
 		}
-		throw new EntityNotFoundException("User not found with id " + id); 
+		throw new EntityNotFoundException("Character not found with id " + id); 
 	}
 	
-	private CharacterDTO toDTO(Character user) {		
-		return this.modelMapper.map(user, CharacterDTO.class);
+	private CharacterDTO toDTO(Character character) {		
+		return this.modelMapper.map(character, CharacterDTO.class);
 		
-		// ModelMapper will create an instance of UserDTO
-		// - it will then assign the values of all fields in `user`, which have the same name
-		//   as the fields in `UserDTO.class`, to that new instance of UserDTO
 	}
 
-	public List<InventoryDTO> getUserInventorys(int Id) {
-		CharacterDTO user = this.getID(Id);
-		List<InventoryDTO> inventorys = inventoryService.getinventorysByUserId(Id);
-		inventorys.forEach(inventory -> inventory.setUserDTO(user));
+	public List<InventoryDTO> getCharacterInventorys(int Id) {
+		CharacterDTO character = this.getID(Id);
+		List<InventoryDTO> inventorys = inventoryService.getinventorysByCharacterId(Id);
+		inventorys.forEach(inventory -> inventory.setCharacterDTO(character));
 		return inventorys;
-	}
-	
+	}	
 }

@@ -69,9 +69,9 @@ public class CharacterController {
 	public ResponseEntity<Character> deleteCharacter(@PathVariable(name = "id") int id) {
 		Optional<Character> character = CharacterRepository.findById(id);
 		if (character.isPresent()) {
-			CharacterRepository.deleteById(id);
-			return new ResponseEntity<>(character.get(), HttpStatus.OK);
+		CharacterRepository.deleteById(id);
+		return new ResponseEntity<>(character.get(), HttpStatus.OK);
 		}
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 }

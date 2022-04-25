@@ -70,12 +70,37 @@ in the recorded sessions with Morgan, this way he'll be able to assist more coll
 fixing the problem myself. If I don't have the problem solved by 1PM on Monday I will reach out.  
 
 ------------------------------------------------------------------------------------------------------------------------
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-data-jdbc</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-jdbc</artifactId>
-	</dependency>
+Replace JDBC with JBA
 ------------------------------------------------------------------------------------------------------------------------
+
+Monday
+Checked in with Morgan first thing as opposed to waiting. 
+API is now loading into postman and Morgan recommended radio buttons for the character classes in my HTML. 
+
+Half an hour into the day and already sitting on lots of success, lets keep the train rolling.
+
+Going to look back on previous lectures and focus on Back end for the next two days
+
+Things done today
+-Updated to radio buttons on HTML code
+-API connected successfully 
+-Created DTO objects and services
+-Created Repositories
+
+Populated these with template code and worked through
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
