@@ -41,7 +41,7 @@ public class Player {
 	private int gold;
 	
 	//This line is causing issues
-	@OneToMany(mappedBy = "character", targetEntity = Inventory.class, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "character_details", targetEntity = Inventory.class, fetch = FetchType.LAZY)
 	private List<Inventory> inventory;
 		
 	protected Player() {
