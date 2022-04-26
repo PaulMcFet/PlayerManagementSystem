@@ -5,7 +5,7 @@ import java.util.Objects;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.qa.data.Entity.Character;
+import com.qa.data.Entity.Player;
 
 public class CharacterDTO {
 
@@ -13,36 +13,35 @@ public class CharacterDTO {
 	
 	@NotNull
 	@NotBlank
-	private String Charactername;
+	private String characterName;
 	
 	@NotNull
-	private String PlayerName;
+	private String playerName;
 	
 	@NotNull
-	private String Cclass;
+	private String playerClass;
 	
 	@NotNull
-	private int SGold;
+	private int Gold;
 	
 	public CharacterDTO() {
 		super();
 	}
 	
-	public CharacterDTO(Character character) {
+	public CharacterDTO(Player character) {
 		this.id = character.getId();
-		this.PlayerName = character.getPlayerName();
-		this.Charactername = character.getCharactername();
-		this.Cclass = character.getCclass();
-		this.SGold = character.getSGold();
+		this.playerName = character.getPlayerName();
+		this.characterName = character.getCharacterName();
+		this.playerClass = character.getPlayerClass();
+		this.Gold = character.getGold();
 		
 	}
 
-	public CharacterDTO(int id, String Charactername, String Cclass, int SGold ) {
-
+	public CharacterDTO(int id, String CharacterName, String playerClass, int Gold ) {
 		this.id = id;
-		this.Charactername = Charactername;
-		this.Cclass = Cclass;
-		this.SGold = SGold;
+		this.characterName = CharacterName;
+		this.playerClass = playerClass;
+		this.Gold = Gold;
 	}
 
 	public int getId() {
@@ -53,33 +52,47 @@ public class CharacterDTO {
 		this.id = id;
 	}
 
-	public String getCharactername() {
-		return Charactername;
+	public String getCharacterName() {
+		return characterName;
 	}
 
-	public void setCharactername(String charactername) {
-		Charactername = charactername;
+	public void setCharacterName(String characterName) {
+		this.characterName = characterName;
 	}
 
-	public String getCclass() {
-		return Cclass;
+	public String getPlayerName() {
+		return playerName;
 	}
 
-	public void setCclass(String cclass) {
-		Cclass = cclass;
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 
-	public int getSGold() {
-		return SGold;
+	public String getPlayerClass() {
+		return playerClass;
 	}
 
-	public void setSGold(int sGold) {
-		SGold = sGold;
+	public void setPlayerClass(String playerClass) {
+		this.playerClass = playerClass;
+	}
+
+	public int getGold() {
+		return Gold;
+	}
+
+	public void setGold(int gold) {
+		Gold = gold;
+	}
+
+	@Override
+	public String toString() {
+		return "CharacterDTO [id=" + id + ", Character Name=" + characterName + ", Player Name=" + playerName
+				+ ", Class=" + playerClass + ", Gold=" + Gold + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, Charactername);
+		return Objects.hash(Gold, characterName, id, playerClass, playerName);
 	}
 
 	@Override
@@ -91,15 +104,11 @@ public class CharacterDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		CharacterDTO other = (CharacterDTO) obj;
-		return Objects.equals(Cclass, other.Cclass) && id == other.id && Objects.equals(Charactername, other.Charactername);
-	}
-
-	@Override
-	public String toString() {
-		return "CharacterDTO [Id=" + getId() + ", Character Name=" + getCharactername() + ", Class="
-				+ getCclass() + ", Gold=" + getSGold() + "]";
+		return Gold == other.Gold && Objects.equals(characterName, other.characterName) && id == other.id
+				&& Objects.equals(playerClass, other.playerClass) && Objects.equals(playerName, other.playerName);
 	}
 
 
-	
+
+
 }

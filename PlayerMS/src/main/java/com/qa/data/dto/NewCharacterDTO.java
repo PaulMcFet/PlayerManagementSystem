@@ -4,34 +4,33 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 public class NewCharacterDTO {
 
 	@NotNull
 	@NotBlank
-	private String charactername;
+	private String characterName;
 	
 	@NotNull
 	private int id;
 	
 	@NotNull
-	private String Cclass;
+	private String playerClass;
 	
 	@NotNull
-	private int SGold;
+	private int gold;
 	
 	
 	public NewCharacterDTO() {
 		super();
 	}
 
-	public String getCharactername() {
-		return charactername;
+	public String getcharacterName() {
+		return characterName;
 	}
 
-	public void setCharactername(String charactername) {
-		this.charactername = charactername;
+	public void setcharacterName(String characterName) {
+		this.characterName = characterName;
 	}
 
 	public int getId() {
@@ -42,25 +41,25 @@ public class NewCharacterDTO {
 		this.id = id;
 	}
 	
-	public String getCclass() {
-		return Cclass;
+	public String getplayerClass() {
+		return playerClass;
 	}
 
-	public void setCclass(String cclass) {
-		this.Cclass = cclass;
+	public void setplayerClass(String playerClass) {
+		this.playerClass = playerClass;
 	}
 
-	public int getSGold() {
-		return SGold;
+	public int getgold() {
+		return gold;
 	}
 
-	public void setSGold(int SGold) {
-		this.SGold = SGold;
+	public void setgold(int gold) {
+		this.gold = gold;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, charactername);
+		return Objects.hash(id, characterName);
 	}
 
 	@Override
@@ -72,7 +71,7 @@ public class NewCharacterDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		NewCharacterDTO other = (NewCharacterDTO) obj;
-		return Objects.equals(id, other.id) && Objects.equals(charactername, other.charactername);
+		return Objects.equals(id, other.id) && Objects.equals(characterName, other.characterName);
 	}
 
 	

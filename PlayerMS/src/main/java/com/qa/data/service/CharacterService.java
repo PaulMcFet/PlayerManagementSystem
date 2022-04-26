@@ -11,7 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qa.data.Entity.Character;
+import com.qa.data.Entity.Player;
 import com.qa.data.repo.CharacterRepository;
 import com.qa.data.dto.NewCharacterDTO;
 import com.qa.data.dto.InventoryDTO;
@@ -32,34 +32,34 @@ public class CharacterService {
 	}
 
 	public List<CharacterDTO> getCharacters() {
-		List<Character> characters = CharacterRepository.findAll();
+		List<Player> characters = CharacterRepository.findAll();
 		List<CharacterDTO> dtos = new ArrayList<>();
 		
-		for (Character character : characters) {
-			dtos.add(this.toDTO(character));
+		for (Player character_details : characters) {
+			dtos.add(this.toDTO(character_details));
 		}
 		return dtos;
 	}
 	
 	public CharacterDTO getCharacter(int id) {
-		Optional<Character> character = CharacterRepository.findById(id);
-		if (character.isPresent()) {
-			return this.toDTO(character.get());
+		Optional<Player> character_details = CharacterRepository.findById(id);
+		if (character_details.isPresent()) {
+			return this.toDTO(character_details.get());
 		}
 		throw new EntityNotFoundException("Character not found with id " + id);
 	}
 	
-	public CharacterDTO createCharacter(NewCharacterDTO character) {
-		Character toSave = this.modelMapper.map(character, Character.class);
-		Character newCharacter = CharacterRepository.save(toSave);
+	public CharacterDTO createCharacter(NewCharacterDTO character_details) {
+		Player toSave = this.modelMapper.map(character_details, Player.class);
+		Player newCharacter = CharacterRepository.save(toSave);
 		return this.toDTO(newCharacter);
 	}
 	
 	@Transactional
 	public CharacterDTO updateCharacter(NewCharacterDTO character, int id) {
 		if (CharacterRepository.existsById(id)) {
-			Character savedCharacter = CharacterRepository.getById(id);
-			savedCharacter.setCharactername(character.getCharactername());
+			Player savedCharacter = CharacterRepository.getById(id);
+			savedCharacter.setCharacterName(character.getcharacterName());
 			return this.toDTO(savedCharacter);
 		}
 		throw new EntityNotFoundException("Character not found with id " + id);
@@ -73,15 +73,15 @@ public class CharacterService {
 		throw new EntityNotFoundException("Character not found with id " + id); 
 	}
 	
-	private CharacterDTO toDTO(Character character) {		
-		return this.modelMapper.map(character, CharacterDTO.class);
+	private CharacterDTO toDTO(Player character_details) {		
+		return this.modelMapper.map(character_details, CharacterDTO.class);
 		
 	}
 
 	public List<InventoryDTO> getCharacterInventorys(int Id) {
-		Character character = CharacterRepository.getById(Id);
+		Player character_details = CharacterRepository.getById(Id);
 		List<InventoryDTO> inventorys = inventoryService.getinventorysByCharacterId(Id);
-		inventorys.forEach(inventory -> inventory.setCharacterDTO(new CharacterDTO(character)));
+		inventorys.forEach(inventory -> inventory.setCharacterDTO(new CharacterDTO(character_details)));
 		return inventorys;
 	}
 }

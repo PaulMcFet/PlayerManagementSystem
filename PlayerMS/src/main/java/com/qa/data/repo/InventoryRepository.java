@@ -1,8 +1,12 @@
 package com.qa.data.repo;
 
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
-public class InventoryRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.qa.data.Entity.Inventory;
+
+public interface InventoryRepository extends JpaRepository<Inventory, Integer>{
+
+	List<Inventory> findByCharacterId(int id);
 }

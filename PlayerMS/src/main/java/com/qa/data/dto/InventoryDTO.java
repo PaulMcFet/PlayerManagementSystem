@@ -5,16 +5,11 @@ import java.util.Objects;
 public class InventoryDTO {
 	
 	private int id;
-
 	private String itemName;
-
 	private int Value;
-	
 	private CharacterDTO characterDTO;
 	
-	
 	protected InventoryDTO() {
-		
 	}
 
 	public InventoryDTO(int id, String itemName, int value, CharacterDTO characterDTO) {
