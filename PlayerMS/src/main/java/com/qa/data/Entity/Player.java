@@ -9,7 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -39,7 +39,7 @@ public class Player {
 	private int gold;
 	
 	
-	@OneToOne(mappedBy = "character", targetEntity = Inventory.class, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "character", targetEntity = Inventory.class, fetch = FetchType.LAZY)
 	private Inventory inventory;
 
 		

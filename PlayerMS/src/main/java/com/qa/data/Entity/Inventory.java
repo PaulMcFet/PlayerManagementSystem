@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -26,37 +25,38 @@ public class Inventory {
 
 	@NotNull
 	@NotBlank
-	private String ItemName;
+	private String itemName;
 
 	@NotNull
 	@NotBlank
-	private int Value;
+	private int price;
+	
 
 	@OneToOne(optional = true, fetch = FetchType.LAZY)
 	@JoinColumn(name = "character_id", referencedColumnName = "id")
-	private Player character;
+	private Player characterId;
 
-	public Inventory(String ItemName, int Value) {
+	public Inventory(String itemName, int price) {
 		super();
-		this.ItemName = ItemName;
-		this.Value = Value;
+		this.itemName = itemName;
+		this.price = price;
 
 	}
 
-	public Inventory(String ItemName, int Value, Player character) {
+	public Inventory(String itemName, int price, Player characterId) {
 		super();
-		this.ItemName = ItemName;
-		this.Value = Value;
-		this.character = character;
+		this.itemName = itemName;
+		this.price = price;
+		this.characterId = characterId;
 
 	}
 
-	public Inventory(int id, String ItemName, int Value, Player character) {
+	public Inventory(int id, String itemName, int price, Player characterId) {
 		super();
 		this.id = id;
-		this.ItemName = ItemName;
-		this.Value = Value;
-		this.character = character;
+		this.itemName = itemName;
+		this.price = price;
+		this.characterId = characterId;
 	}
 
 	public int getId() {
@@ -68,37 +68,37 @@ public class Inventory {
 	}
 
 	public String getItemName() {
-		return ItemName;
+		return itemName;
 	}
 
-	public void setItemName(String ItemName) {
-		this.ItemName = ItemName;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 
-	public int getValue() {
-		return Value;
+	public int getPrice() {
+		return price;
 	}
 
-	public void setValue(int Value) {
-		this.Value = Value;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
-	public Player getCharacter() {
-		return character;
+	public Player getCharacterId() {
+		return characterId;
 	}
 
-	public void setCharacter(Player character) {
-		this.character = character;
+	public void setCharacterId(Player characterId) {
+		this.characterId = characterId;
 	}
 
 	@Override
 	public String toString() {
-		return "Inventory [id=" + id + ", ItemName=" + ItemName + ", Value=" + Value + ", character=" + character + "]";
+		return "Inventory [id=" + id + ", itemName=" + itemName + ", price=" + price + ", characterId=" + characterId + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Value, id, ItemName, character);
+		return Objects.hash(price, id, itemName, characterId);
 	}
 
 	@Override
@@ -110,8 +110,8 @@ public class Inventory {
 		if (getClass() != obj.getClass())
 			return false;
 		Inventory other = (Inventory) obj;
-		return Objects.equals(Value, other.Value) && id == other.id && Objects.equals(ItemName, other.ItemName)
-				&& Objects.equals(character, other.character);
+		return Objects.equals(price, other.price) && id == other.id && Objects.equals(itemName, other.itemName)
+				&& Objects.equals(characterId, other.characterId);
 	}
 
 }

@@ -9,31 +9,31 @@ public class UpdateInventoryDTO {
 
 	@NotNull
 	@NotBlank
-	private String ItemName;
+	private String itemName;
 	
 	@NotNull
 	@NotBlank
-	private int value;
+	private int price;
 
 	public String getItemName() {
-		return ItemName;
+		return itemName;
 	}
 
-	public void setItemName(String ItemName) {
-		this.ItemName = ItemName;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 
-	public int getValue() {
-		return value;
+	public int getPrice() {
+		return price;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(value, ItemName);
+		return Objects.hash(price, itemName);
 	}
 
 	@Override
@@ -45,12 +45,12 @@ public class UpdateInventoryDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		UpdateInventoryDTO other = (UpdateInventoryDTO) obj;
-		return Objects.equals(value, other.value) && Objects.equals(ItemName, other.ItemName);
+		return Objects.equals(price, other.price) && Objects.equals(itemName, other.itemName);
 	}
 
 	@Override
 	public String toString() {
-		return "UpdateInventoryDTO [ItemName=" + ItemName + ", value=" + value + "]";
+		return "UpdateInventoryDTO [itemName=" + itemName + ", price=" + price + "]";
 	}
 	
 }
