@@ -31,23 +31,24 @@ public class Inventory {
 	@NotBlank
 	private int price;
 	
-
+	
 	@OneToOne(mappedBy = "Inventory", fetch = FetchType.LAZY)
-	@JoinColumn(name = "characterid", referencedColumnName = "id")
-	private Player characterId;
+	@JoinColumn(name = "character_details", referencedColumnName = "id")
+
+	//characterid is causing problems, 
+	private Player characterid;
 
 	public Inventory(String itemName, int price) {
 		super();
 		this.itemName = itemName;
 		this.price = price;
-
 	}
 
 	public Inventory(String itemName, int price, Player characterId) {
 		super();
 		this.itemName = itemName;
 		this.price = price;
-		this.characterId = characterId;
+		this.characterid = characterId;
 
 	}
 
@@ -56,7 +57,7 @@ public class Inventory {
 		this.id = id;
 		this.itemName = itemName;
 		this.price = price;
-		this.characterId = characterId;
+		this.characterid = characterId;
 	}
 
 	public int getId() {
@@ -84,21 +85,21 @@ public class Inventory {
 	}
 
 	public Player getCharacterId() {
-		return characterId;
+		return characterid;
 	}
 
 	public void setCharacterId(Player characterId) {
-		this.characterId = characterId;
+		this.characterid = characterId;
 	}
 
 	@Override
 	public String toString() {
-		return "Inventory [id=" + id + ", itemName=" + itemName + ", price=" + price + ", characterId=" + characterId + "]";
+		return "Inventory [id=" + id + ", itemName=" + itemName + ", price=" + price + ", characterId=" + characterid + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(price, id, itemName, characterId);
+		return Objects.hash(price, id, itemName, characterid);
 	}
 
 	@Override
@@ -111,7 +112,7 @@ public class Inventory {
 			return false;
 		Inventory other = (Inventory) obj;
 		return Objects.equals(price, other.price) && id == other.id && Objects.equals(itemName, other.itemName)
-				&& Objects.equals(characterId, other.characterId);
+				&& Objects.equals(characterid, other.characterid);
 	}
 
 }

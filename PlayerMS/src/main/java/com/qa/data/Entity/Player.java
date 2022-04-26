@@ -40,16 +40,13 @@ public class Player {
 	private String playerClass;
 	private int gold;
 	
-	
-	@OneToMany(mappedBy = "character_id", targetEntity = Inventory.class, fetch = FetchType.LAZY)
+	//This line is causing issues
+	@OneToMany(mappedBy = "character", targetEntity = Inventory.class, fetch = FetchType.LAZY)
 	private List<Inventory> inventory;
-
 		
 	protected Player() {
 		super();
-		this.inventory = new ArrayList<>();
 	}
-
 
 	public Player(int id,
 			@NotNull @NotBlank @Size(min = 2, max = 16, message = "Character name must have at least 2 characters, but no more than 16") String characterName,
