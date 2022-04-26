@@ -16,7 +16,7 @@
     function readAll() {
         setStatus('PREPARING GET REQUEST');
 
-        fetch('https://jsonplaceholder.typicode.com/users', {
+        fetch('http://localhost:8080/character', {
             method: 'GET'
         }).then(response => {
             setStatus('RECEIVED RESPONSE');
@@ -37,7 +37,7 @@
     function readById() {
         setStatus('PREPARING GET REQUEST');
 
-        fetch(`https://jsonplaceholder.typicode.com/users/${id.value}`, {
+        fetch('http://localhost:8080/character/${id.value}', {
             method: 'GET'
         }).then(response => {
             setStatus('RECEIVED RESPONSE');
@@ -55,11 +55,9 @@
         });
     }
 
-    // default initialisation
     readAll();
 
     requestSelector.addEventListener('change', function(event) {
-        // access the current element that we are adding an event to with 'this'
         if (this.value == 'ALL') {
             toggleIdVisibility(false);
         } else if (this.value == 'ID') {
@@ -68,7 +66,7 @@
     });
 
     dataForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // prevent default page refresh on form submission
+        event.preventDefault();
         if (requestSelector.value == 'ALL') readAll();
         else if (requestSelector.value == 'ID') readById();
     });

@@ -10,42 +10,41 @@ public class NewInventoryDTO {
 
 	@NotNull
 	@NotBlank
-	@Size(min = 3, max = 32, message = "Title must have at least 3 characters, but no more than 32")
-	private String title;
+	private String itemName;
 	
 	@NotNull
 	@NotBlank
-	private String content;
+	private int value;
 	
 	protected NewInventoryDTO() {
 		
 	}
 
-	public NewInventoryDTO(String title, String content) {
+	public NewInventoryDTO(String itemName, int value) {
 		super();
-		this.title = title;
-		this.content = content;
+		this.itemName = itemName;
+		this.value = value;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getItemName() {
+		return itemName;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 
-	public String getContent() {
-		return content;
+	public int getValue() {
+		return value;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setValue(int value) {
+		this.value = value;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(content, title);
+		return Objects.hash(value, itemName);
 	}
 
 	@Override
@@ -57,12 +56,12 @@ public class NewInventoryDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		NewInventoryDTO other = (NewInventoryDTO) obj;
-		return Objects.equals(content, other.content) && Objects.equals(title, other.title);
+		return Objects.equals(value, other.value) && Objects.equals(itemName, other.itemName);
 	}
 
 	@Override
 	public String toString() {
-		return "NewInventoryDTO [title=" + title + ", content=" + content + "]";
+		return "NewInventoryDTO [itemName=" + itemName + ", value=" + value + "]";
 	}
 	
 }

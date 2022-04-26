@@ -24,7 +24,7 @@ function readById() {
     });
 }
     dataForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // prevent default page refresh on form submission
+        event.preventDefault(); 
         readById();
     });
 })();

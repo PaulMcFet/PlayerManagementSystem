@@ -1,35 +1,28 @@
 package com.qa.data.dto;
 
-import java.time.LocalDate;
 import java.util.Objects;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 public class InventoryDTO {
 	
 	private int id;
 
-	private String title;
+	private String itemName;
 
-	private String content;
+	private int Value;
 	
 	private CharacterDTO characterDTO;
 	
-	private LocalDate postedAt;
 	
 	protected InventoryDTO() {
 		
 	}
 
-	public InventoryDTO(int id, String title, String content, CharacterDTO characterDTO, LocalDate postedAt) {
+	public InventoryDTO(int id, String itemName, int value, CharacterDTO characterDTO) {
 		super();
 		this.id = id;
-		this.title = title;
-		this.content = content;
+		this.itemName = itemName;
+		this.Value = value;
 		this.characterDTO = characterDTO;
-		this.postedAt = postedAt;
 	}
 
 	public int getId() {
@@ -40,20 +33,20 @@ public class InventoryDTO {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getItemName() {
+		return itemName;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 
-	public String getContent() {
-		return content;
+	public int getValue() {
+		return Value;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setValue(int value) {
+		this.Value = value;
 	}
 
 	public CharacterDTO getCharacterDTO() {
@@ -64,17 +57,10 @@ public class InventoryDTO {
 		this.characterDTO = characterDTO;
 	}
 
-	public LocalDate getPostedAt() {
-		return postedAt;
-	}
-
-	public void setPostedAt(LocalDate postedAt) {
-		this.postedAt = postedAt;
-	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(content, id, title, characterDTO);
+		return Objects.hash(Value, id, itemName, characterDTO);
 	}
 
 	@Override
@@ -86,14 +72,15 @@ public class InventoryDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		InventoryDTO other = (InventoryDTO) obj;
-		return Objects.equals(content, other.content) && id == other.id && Objects.equals(title, other.title)
+		return Objects.equals(Value, other.Value) && id == other.id && Objects.equals(itemName, other.itemName)
 				&& Objects.equals(characterDTO, other.characterDTO);
 	}
 
 	@Override
 	public String toString() {
-		return "InventoryDTO [id=" + id + ", title=" + title + ", content=" + content + ", characterDTO=" + characterDTO
-				+ ", postedAt=" + postedAt + "]";
+		return "InventoryDTO [id=" + id + ", itemName=" + itemName + ", value=" + Value + ", characterDTO=" + characterDTO
+				+"]";
 	}
+
 	
 }

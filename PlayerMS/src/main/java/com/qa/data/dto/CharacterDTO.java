@@ -2,10 +2,10 @@ package com.qa.data.dto;
 
 import java.util.Objects;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
+import com.qa.data.Entity.Character;
 
 public class CharacterDTO {
 
@@ -13,22 +13,36 @@ public class CharacterDTO {
 	
 	@NotNull
 	@NotBlank
-	@Size(min = 2, max = 16, message = "Charactername must have at least 2 characters, but no more than 16")
 	private String Charactername;
 	
 	@NotNull
-	@Email
-	private String email;
+	private String PlayerName;
+	
+	@NotNull
+	private String Cclass;
+	
+	@NotNull
+	private int SGold;
 	
 	public CharacterDTO() {
 		super();
 	}
+	
+	public CharacterDTO(Character character) {
+		this.id = character.getId();
+		this.PlayerName = character.getPlayerName();
+		this.Charactername = character.getCharactername();
+		this.Cclass = character.getCclass();
+		this.SGold = character.getSGold();
+		
+	}
 
-	public CharacterDTO(int id, String Charactername, String email) {
-		super();
+	public CharacterDTO(int id, String Charactername, String Cclass, int SGold ) {
+
 		this.id = id;
 		this.Charactername = Charactername;
-		this.email = email;
+		this.Cclass = Cclass;
+		this.SGold = SGold;
 	}
 
 	public int getId() {
@@ -44,20 +58,28 @@ public class CharacterDTO {
 	}
 
 	public void setCharactername(String charactername) {
-		this.Charactername = charactername;
+		Charactername = charactername;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getCclass() {
+		return Cclass;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCclass(String cclass) {
+		Cclass = cclass;
+	}
+
+	public int getSGold() {
+		return SGold;
+	}
+
+	public void setSGold(int sGold) {
+		SGold = sGold;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, id, Charactername);
+		return Objects.hash(id, Charactername);
 	}
 
 	@Override
@@ -69,12 +91,15 @@ public class CharacterDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		CharacterDTO other = (CharacterDTO) obj;
-		return Objects.equals(email, other.email) && id == other.id && Objects.equals(Charactername, other.Charactername);
+		return Objects.equals(Cclass, other.Cclass) && id == other.id && Objects.equals(Charactername, other.Charactername);
 	}
 
 	@Override
 	public String toString() {
-		return "CharacterDTO [id=" + id + ", charactername=" + Charactername + ", email=" + email + "]";
+		return "CharacterDTO [Id=" + getId() + ", Character Name=" + getCharactername() + ", Class="
+				+ getCclass() + ", Gold=" + getSGold() + "]";
 	}
+
+
 	
 }

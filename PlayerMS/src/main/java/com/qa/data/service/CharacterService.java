@@ -11,8 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qa.data.Character;
-import com.qa.data.repo.InventoryRepository;
+import com.qa.data.Entity.Character;
 import com.qa.data.repo.CharacterRepository;
 import com.qa.data.dto.NewCharacterDTO;
 import com.qa.data.dto.InventoryDTO;
@@ -27,7 +26,6 @@ public class CharacterService {
 
 	@Autowired
 	public CharacterService(CharacterRepository characterRepository, InventoryService inventoryService, ModelMapper modelMapper) {
-		super();
 		this.CharacterRepository = characterRepository;
 		this.inventoryService = inventoryService;
 		this.modelMapper = modelMapper;
@@ -45,7 +43,6 @@ public class CharacterService {
 	
 	public CharacterDTO getCharacter(int id) {
 		Optional<Character> character = CharacterRepository.findById(id);
-		
 		if (character.isPresent()) {
 			return this.toDTO(character.get());
 		}
@@ -62,7 +59,7 @@ public class CharacterService {
 	public CharacterDTO updateCharacter(NewCharacterDTO character, int id) {
 		if (CharacterRepository.existsById(id)) {
 			Character savedCharacter = CharacterRepository.getById(id);
-			savedCharacter.setCharacterName(character.getCharactername());
+			savedCharacter.setCharactername(character.getCharactername());
 			return this.toDTO(savedCharacter);
 		}
 		throw new EntityNotFoundException("Character not found with id " + id);
@@ -82,9 +79,10 @@ public class CharacterService {
 	}
 
 	public List<InventoryDTO> getCharacterInventorys(int Id) {
-		CharacterDTO character = this.getID(Id);
+		Character character = CharacterRepository.getById(Id);
 		List<InventoryDTO> inventorys = inventoryService.getinventorysByCharacterId(Id);
-		inventorys.forEach(inventory -> inventory.setCharacterDTO(character));
+		inventorys.forEach(inventory -> inventory.setCharacterDTO(new CharacterDTO(character)));
 		return inventorys;
-	}	
+	}
 }
+

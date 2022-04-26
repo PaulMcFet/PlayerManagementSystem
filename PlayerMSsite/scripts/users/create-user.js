@@ -16,7 +16,7 @@
         setStatus('PREPARING POST REQUEST');
         
 
-        fetch('https://jsonplaceholder.typicode.com/users', {
+        fetch('http://localhost:8080/character', {
             method: 'POST',
             body: JSON.stringify(createUserFromFormObj(formDataObject)),
             headers: {

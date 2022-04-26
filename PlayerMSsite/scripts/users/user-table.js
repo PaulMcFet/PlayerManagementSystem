@@ -48,7 +48,7 @@
     }
 
     function handleFormSubmission(event) {
-      event.preventDefault(); // prevent default page refresh on submit
+      event.preventDefault(); 
       const form = event.currentTarget;
       const formData = new FormData(form);
       const dataObject = Object.fromEntries(formData.entries());
@@ -83,11 +83,6 @@
           break;
       }
     }
-
-
-    // event listeners and page initialisation
-
-    // initialise user table with data and render on screen
     requestManager.sendRequest()
                   .then(response => response.json())
                   .then(response => {

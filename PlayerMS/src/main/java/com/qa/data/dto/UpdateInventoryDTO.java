@@ -10,32 +10,31 @@ public class UpdateInventoryDTO {
 
 	@NotNull
 	@NotBlank
-	@Size(min = 3, max = 32, message = "Title must have at least 3 characters, but no more than 32")
-	private String title;
+	private String ItemName;
 	
 	@NotNull
 	@NotBlank
-	private String content;
+	private int value;
 
-	public String getTitle() {
-		return title;
+	public String getItemName() {
+		return ItemName;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setItemName(String ItemName) {
+		this.ItemName = ItemName;
 	}
 
-	public String getContent() {
-		return content;
+	public int getValue() {
+		return value;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setValue(int value) {
+		this.value = value;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(content, title);
+		return Objects.hash(value, ItemName);
 	}
 
 	@Override
@@ -47,12 +46,12 @@ public class UpdateInventoryDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		UpdateInventoryDTO other = (UpdateInventoryDTO) obj;
-		return Objects.equals(content, other.content) && Objects.equals(title, other.title);
+		return Objects.equals(value, other.value) && Objects.equals(ItemName, other.ItemName);
 	}
 
 	@Override
 	public String toString() {
-		return "UpdateInventoryDTO [title=" + title + ", content=" + content + "]";
+		return "UpdateInventoryDTO [ItemName=" + ItemName + ", value=" + value + "]";
 	}
 	
 }

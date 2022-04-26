@@ -2,7 +2,6 @@ package com.qa.data.dto;
 
 import java.util.Objects;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,12 +10,17 @@ public class NewCharacterDTO {
 
 	@NotNull
 	@NotBlank
-	@Size(min = 2, max = 16, message = "Character name must have at least 2 characters, but no more than 16")
 	private String charactername;
 	
 	@NotNull
-	@Email
-	private String email;
+	private int id;
+	
+	@NotNull
+	private String Cclass;
+	
+	@NotNull
+	private int SGold;
+	
 	
 	public NewCharacterDTO() {
 		super();
@@ -30,17 +34,33 @@ public class NewCharacterDTO {
 		this.charactername = charactername;
 	}
 
-	public String getEmail() {
-		return email;
+	public int getId() {
+		return id;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getCclass() {
+		return Cclass;
+	}
+
+	public void setCclass(String cclass) {
+		this.Cclass = cclass;
+	}
+
+	public int getSGold() {
+		return SGold;
+	}
+
+	public void setSGold(int SGold) {
+		this.SGold = SGold;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, charactername);
+		return Objects.hash(id, charactername);
 	}
 
 	@Override
@@ -52,7 +72,7 @@ public class NewCharacterDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		NewCharacterDTO other = (NewCharacterDTO) obj;
-		return Objects.equals(email, other.email) && Objects.equals(charactername, other.charactername);
+		return Objects.equals(id, other.id) && Objects.equals(charactername, other.charactername);
 	}
 
 	

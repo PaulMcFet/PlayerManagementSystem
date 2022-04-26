@@ -1,11 +1,11 @@
-package com.qa.PlayerMSt;
+package com.qa.data.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qa.data.Character;
-import com.qa.data.repo.CharacterRepository;
+import com.qa.data.Entity.Character;
+import com.qa.data.service.CharacterService;
+import com.qa.data.dto.CharacterDTO;
 
 @RestController
 @RequestMapping(path = "/character")
@@ -28,6 +29,13 @@ public class CharacterController {
 	private List<Character> characters = new ArrayList<>(
 			List.of(new Character(1, "Tim", "Toby", "Wizard", 50), new Character(2, "Nika", "Jayla", "Paladin", 0)));
 
+	private CharacterService service;
+	
+	@Autowired
+	public CharacterController(CharacterService service) {
+		this.service = service;
+	}
+	
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<Character> getCharacter(@PathVariable(name = "id") int id) {
 		for (int i = 0; i < characters.size(); i++) {
@@ -59,19 +67,17 @@ public class CharacterController {
 			}
 		}
 		if (savedCharacter != null) {
-			savedCharacter.setCharacterName(character.getCharacterName());
+			savedCharacter.setCharactername(character.getCharactername());
 			return ResponseEntity.ok(savedCharacter);
 		}
 		return ResponseEntity.notFound().build();
 	}
 
 	@DeleteMapping(path = "/{id}")
-	public ResponseEntity<Character> deleteCharacter(@PathVariable(name = "id") int id) {
-		Optional<Character> character = CharacterRepository.findById(id);
-		if (character.isPresent()) {
-		CharacterRepository.deleteById(id);
-		return new ResponseEntity<>(character.get(), HttpStatus.OK);
-		}
-	return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	public ResponseEntity<?> deleteCharacter(@PathVariable(name = "id") int id) {
+		CharacterDTO deletedCharacter = service.getCharacter(id);
+		service.deleteCharacter(id);
+		return ResponseEntity.ok(deletedCharacter);
+	
 	}
 }
