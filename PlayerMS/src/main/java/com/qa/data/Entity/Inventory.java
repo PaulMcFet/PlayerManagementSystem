@@ -32,8 +32,8 @@ public class Inventory {
 	private int price;
 	
 
-	@OneToOne(optional = true, fetch = FetchType.LAZY)
-	@JoinColumn(name = "character_id", referencedColumnName = "id")
+	@OneToOne(mappedBy = "Inventory", fetch = FetchType.LAZY)
+	@JoinColumn(name = "characterid", referencedColumnName = "id")
 	private Player characterId;
 
 	public Inventory(String itemName, int price) {

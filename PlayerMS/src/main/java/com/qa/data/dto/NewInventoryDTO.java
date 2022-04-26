@@ -13,16 +13,16 @@ public class NewInventoryDTO {
 	
 	@NotNull
 	@NotBlank
-	private int value;
+	private int price;
 	
 	protected NewInventoryDTO() {
 		
 	}
 
-	public NewInventoryDTO(String itemName, int value) {
+	public NewInventoryDTO(String itemName, int price) {
 		super();
 		this.itemName = itemName;
-		this.value = value;
+		this.price = price;
 	}
 
 	public String getItemName() {
@@ -33,17 +33,17 @@ public class NewInventoryDTO {
 		this.itemName = itemName;
 	}
 
-	public int getValue() {
-		return value;
+	public int getPrice() {
+		return price;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(value, itemName);
+		return Objects.hash(price, itemName);
 	}
 
 	@Override
@@ -55,12 +55,12 @@ public class NewInventoryDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		NewInventoryDTO other = (NewInventoryDTO) obj;
-		return Objects.equals(value, other.value) && Objects.equals(itemName, other.itemName);
+		return Objects.equals(price, other.price) && Objects.equals(itemName, other.itemName);
 	}
 
 	@Override
 	public String toString() {
-		return "NewInventoryDTO [itemName=" + itemName + ", value=" + value + "]";
+		return "NewInventoryDTO [itemName=" + itemName + ", price=" + price + "]";
 	}
 	
 }
