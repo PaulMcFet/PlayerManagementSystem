@@ -90,9 +90,32 @@ Things done today
 Populated these with template code and worked through
 
 
+------------------------------------------------------------------------------------------------------------------------
+Tuesday
 
+Today was a grind,
 
+-Created more DTOs for Inventory
 
+-Spent a few hours troubleshooting and eventually managed to get my java to create tables in SQL,
+~This was a very proud achievement and when it was completed it felt like witchcraft that it was working.
+
+-After I got this working I made a change to the way the code is going to work, instead of having an
+individual inventory for each player, the inventory class is now acting as "The Adventuring Partys Inventory"
+this means that at a glance all players can see every item, the Game master will be able to manage items easier
+and when items are added they are given an owner ID or the Character_id, this ties directly to their character and 
+we can use Select * From Inventory Where Character_id = X to see the items owned by a specific player. 
+
+-Walked Morgan through my Code and explained how I wanted it to work. 
+Morgan was a fantastic help and helped me understand a lot of the code that was implemented and why it was there. 
+He also explained that something tthat was causing an issue was my variable names, 
+as I have variables named "Character" "Cclass" And "SGold" Which do not fit with regular naming conventions. 
+I've since renamed these variables and ensured functionallity. 
+
+-From 4pm until 7pm I worked on creating functionallity for my Inventory part of the API. 
+Still working on that and will carry on working on it tomorrow, I aim to have full functionallity by tomorrow at 12.
+1PM at the very latest
+ 
 
 
 
