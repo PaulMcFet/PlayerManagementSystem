@@ -15,14 +15,20 @@ public class NewInventoryDTO {
 	@NotBlank
 	private int price;
 	
+	@NotNull
+	@NotBlank
+	private int characterId;
+	
+	
 	protected NewInventoryDTO() {
 		
 	}
 
-	public NewInventoryDTO(String itemName, int price) {
+	public NewInventoryDTO(String itemName, int price, int characterId) {
 		super();
 		this.itemName = itemName;
 		this.price = price;
+		this.characterId = characterId;
 	}
 
 	public String getItemName() {
@@ -41,9 +47,17 @@ public class NewInventoryDTO {
 		this.price = price;
 	}
 
+	public int getCharacterId() {
+		return characterId;
+	}
+
+	public void setCharacterId(int characterId) {
+		this.characterId = characterId;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(price, itemName);
+		return Objects.hash(characterId, itemName, price);
 	}
 
 	@Override
@@ -55,12 +69,13 @@ public class NewInventoryDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		NewInventoryDTO other = (NewInventoryDTO) obj;
-		return Objects.equals(price, other.price) && Objects.equals(itemName, other.itemName);
+		return characterId == other.characterId && Objects.equals(itemName, other.itemName) && price == other.price;
 	}
 
 	@Override
 	public String toString() {
-		return "NewInventoryDTO [itemName=" + itemName + ", price=" + price + "]";
+		return "NewInventoryDTO [getItemName()=" + getItemName() + ", getPrice()=" + getPrice() + ", getCharacterId()="
+				+ getCharacterId() + "]";
 	}
-	
+
 }

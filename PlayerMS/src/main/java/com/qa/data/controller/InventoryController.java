@@ -41,9 +41,9 @@ public class InventoryController {
 		return ResponseEntity.ok(inventoryService.getInventorys());
 	}
 	
-	@GetMapping(path = "/{id}")
-	public ResponseEntity<InventoryDTO> getInventory(@PathVariable(name = "id") int id) {
-		return ResponseEntity.ok(inventoryService.getInventory(id));
+	@GetMapping(path = "/{characterid}")
+	public ResponseEntity<InventoryDTO> getInventory(@PathVariable(name = "characterid") int characterid) {
+		return ResponseEntity.ok(inventoryService.getInventory(characterid));
 	}
 	
 	@PostMapping
@@ -54,9 +54,9 @@ public class InventoryController {
 		return new ResponseEntity<>(newInventory, headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<InventoryDTO> updateInventory(@Valid @RequestBody UpdateInventoryDTO Inventory, @PathVariable(name = "id") int id) {
-		return ResponseEntity.ok(inventoryService.updateInventory(Inventory, id));
+	@PutMapping(path = "/{characterid}")
+	public ResponseEntity<InventoryDTO> updateInventory(@Valid @RequestBody UpdateInventoryDTO Inventory, @PathVariable(name = "characterid") int characterid) {
+		return ResponseEntity.ok(inventoryService.updateInventory(Inventory, characterid));
 	}
 	
 	@DeleteMapping(path = "/{id}")

@@ -15,6 +15,10 @@ public class UpdateInventoryDTO {
 	@NotBlank
 	private int price;
 
+	@NotNull
+	@NotBlank
+	private int characterid;
+	
 	public String getItemName() {
 		return itemName;
 	}
@@ -31,9 +35,17 @@ public class UpdateInventoryDTO {
 		this.price = price;
 	}
 
+	public int getCharacterid() {
+		return characterid;
+	}
+
+	public void setCharacterid(int characterid) {
+		this.characterid = characterid;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(price, itemName);
+		return Objects.hash(characterid, itemName, price);
 	}
 
 	@Override
@@ -45,12 +57,13 @@ public class UpdateInventoryDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		UpdateInventoryDTO other = (UpdateInventoryDTO) obj;
-		return Objects.equals(price, other.price) && Objects.equals(itemName, other.itemName);
+		return characterid == other.characterid && Objects.equals(itemName, other.itemName) && price == other.price;
 	}
 
 	@Override
 	public String toString() {
-		return "UpdateInventoryDTO [itemName=" + itemName + ", price=" + price + "]";
+		return "UpdateInventoryDTO [getItemName()=" + getItemName() + ", getPrice()=" + getPrice()
+				+ ", getCharacterid()=" + getCharacterid() + ", hashCode()=" + hashCode() + "]";
 	}
-	
+
 }

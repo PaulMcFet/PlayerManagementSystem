@@ -34,10 +34,10 @@ public class Inventory {
 	
 	
 	@ManyToOne(optional = true, fetch = FetchType.LAZY)
-	@JoinColumn(name = "character_details", referencedColumnName = "id")
+	@JoinColumn(name = "character_id", referencedColumnName = "id")
 
-	//characterid is causing problems, 
-	private Player characterid;
+
+	private Player character;
 
 	public Inventory(String itemName, int price) {
 		super();
@@ -45,20 +45,13 @@ public class Inventory {
 		this.price = price;
 	}
 
-	public Inventory(String itemName, int price, Player characterId) {
-		super();
-		this.itemName = itemName;
-		this.price = price;
-		this.characterid = characterId;
-
-	}
-
-	public Inventory(int id, String itemName, int price, Player characterId) {
+	public Inventory(int id, String itemName, int price, Player character) {
 		super();
 		this.id = id;
 		this.itemName = itemName;
 		this.price = price;
-		this.characterid = characterId;
+		this.character = character;
+
 	}
 
 	public int getId() {
@@ -85,22 +78,22 @@ public class Inventory {
 		this.price = price;
 	}
 
-	public Player getCharacterId() {
-		return characterid;
+	public Player getCharacter() {
+		return character;
 	}
 
-	public void setCharacterId(Player characterId) {
-		this.characterid = characterId;
+	public void setCharacter(Player character) {
+		this.character = character;
 	}
 
 	@Override
 	public String toString() {
-		return "Inventory [id=" + id + ", itemName=" + itemName + ", price=" + price + ", characterId=" + characterid + "]";
+		return "Inventory [itemName=" + itemName + ", price=" + price + ", character=" + character + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(price, id, itemName, characterid);
+		return Objects.hash(price, itemName, character);
 	}
 
 	@Override
@@ -112,8 +105,8 @@ public class Inventory {
 		if (getClass() != obj.getClass())
 			return false;
 		Inventory other = (Inventory) obj;
-		return Objects.equals(price, other.price) && id == other.id && Objects.equals(itemName, other.itemName)
-				&& Objects.equals(characterid, other.characterid);
+		return Objects.equals(price, other.price) && Objects.equals(itemName, other.itemName)
+				&& Objects.equals(character, other.character);
 	}
 
 }

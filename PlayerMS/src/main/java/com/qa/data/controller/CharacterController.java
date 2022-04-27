@@ -54,15 +54,6 @@ public class CharacterController {
 		}
 		return new ResponseEntity<Player>(HttpStatus.NOT_FOUND);
 	}
-	
-	
-	//Read Inventory by ID
-//	// TODO
-//	@GetMapping(path = "/{id}/posts")
-//	public ResponseEntity<List<PostDTO>> getUserPosts(@PathVariable(name = "id") int userId) {
-//		return ResponseEntity.ok(userService.getUserPosts(userId));
-//		// TODO
-		
 		
 	@PostMapping
 	public ResponseEntity<Player> createCharacter(@Valid @RequestBody Player character) {
@@ -76,7 +67,8 @@ public class CharacterController {
 
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<Player> updateCharacter(@RequestBody Player character, int id,
-			@PathVariable(name = "CharacterName") String CharacterName) {
+			@PathVariable(name = "CharacterName") String CharacterName)
+	{
 		Player savedCharacter = null;
 		for (int i = 0; i < characters.size(); i++) {
 			if (this.characters.get(i).getId() == id) {
@@ -95,6 +87,5 @@ public class CharacterController {
 		CharacterDTO deletedCharacter = service.getCharacter(id);
 		service.deleteCharacter(id);
 		return ResponseEntity.ok(deletedCharacter);
-	
 	}
 }

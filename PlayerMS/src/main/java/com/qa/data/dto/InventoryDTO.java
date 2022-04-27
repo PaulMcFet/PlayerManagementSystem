@@ -5,6 +5,7 @@ import java.util.Objects;
 public class InventoryDTO {
 	
 	private int id;
+	private int characterid;
 	private String itemName;
 	private int price;
 	private CharacterDTO characterDTO;
@@ -12,9 +13,10 @@ public class InventoryDTO {
 	protected InventoryDTO() {
 	}
 
-	public InventoryDTO(int id, String itemName, int price, CharacterDTO characterDTO) {
+	public InventoryDTO(int id, int characterid, String itemName, int price, CharacterDTO characterDTO) {
 		super();
 		this.id = id;
+		this.characterid = characterid;
 		this.itemName = itemName;
 		this.price = price;
 		this.characterDTO = characterDTO;
@@ -26,6 +28,14 @@ public class InventoryDTO {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getcharacterId() {
+		return characterid;
+	}
+
+	public void setcharacterId(int characterid) {
+		this.characterid = characterid;
 	}
 
 	public String getItemName() {
@@ -52,10 +62,9 @@ public class InventoryDTO {
 		this.characterDTO = characterDTO;
 	}
 
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(price, id, itemName, characterDTO);
+		return Objects.hash(characterDTO, characterid, id, itemName, price);
 	}
 
 	@Override
@@ -67,15 +76,14 @@ public class InventoryDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		InventoryDTO other = (InventoryDTO) obj;
-		return Objects.equals(price, other.price) && id == other.id && Objects.equals(itemName, other.itemName)
-				&& Objects.equals(characterDTO, other.characterDTO);
+		return Objects.equals(characterDTO, other.characterDTO) && characterid == other.characterid && id == other.id
+				&& Objects.equals(itemName, other.itemName) && price == other.price;
 	}
 
 	@Override
 	public String toString() {
-		return "InventoryDTO [id=" + id + ", itemName=" + itemName + ", price=" + price + ", characterDTO=" + characterDTO
-				+"]";
-	}
-
-	
+		return "InventoryDTO [Id()=" + getId() + ", character Id()=" + getcharacterId() + ", Item Name()="
+				+ getItemName() + ", Price()=" + getPrice() + ", CharacterDTO()=" + getCharacterDTO()
+				+ "]";
+	}	
 }
