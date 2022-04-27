@@ -115,10 +115,30 @@ I've since renamed these variables and ensured functionallity.
 -From 4pm until 7pm I worked on creating functionallity for my Inventory part of the API. 
 Still working on that and will carry on working on it tomorrow, I aim to have full functionallity by tomorrow at 12.
 1PM at the very latest
- 
+------------------------------------------------------------------------------------------------------------------------
+Wednesday
+(Happy birthday to my dog Piper!)
+
+Another grind today but I was adamant I was achieving functionallity today, which I did.
+
+-Troubleshot issues with the mappedBy feature
+-Worked on using the service class to optimise my posting/deletion methods. 
+-general troubleshooting took up a few hours today
 
 
+Reached out to Morgan for some more help today, I'm very hopeful that this is the last time he has to hear from me,
+but as of right now the API is functional, tomorrow I need to work on my deletion methods and do some more testing of the 
+API to confirm it's functioning as designed. 
 
+Also as I'm presenting fairly early on friday I should work on that aswell. 
+
+So tomorrow I'm aiming to:
+-Test the Java more and make sure it adds/deletes as designed
+-updating the ERD to reflect the current data model
+-begin work on connecting my existing code to my front end. 
+
+At this point I am slightly worried that I may not have a fully completed project by the deadline, but I need a day of 
+complete focus, a solid stream of coffee from my kitchen to me and zero distractions.
 
 
 
