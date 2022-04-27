@@ -18,7 +18,7 @@ function Character(CharacterName, CharacterClass, SGold, Inventory) {
     }
 }
 
-const userHeaders = ['id', 'name', 'CharacterName', 'Starting Gold', 'Class'];
+const userHeaders = ['id', 'character_name', 'gold', 'player_class', 'player_name'];
 
 // containerElement is the element we want to render the table into
 // users is an array of objects representing user data

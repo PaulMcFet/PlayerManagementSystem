@@ -59,7 +59,7 @@ public class CharacterService {
 	public CharacterDTO updateCharacter(NewCharacterDTO character, int id) {
 		if (CharacterRepository.existsById(id)) {
 			Player savedCharacter = CharacterRepository.getById(id);
-			savedCharacter.setCharacterName(character.getcharacterName());
+			savedCharacter.setCharacterName(character.getCharacterName());
 			return this.toDTO(savedCharacter);
 		}
 		throw new EntityNotFoundException("Character not found with id " + id);

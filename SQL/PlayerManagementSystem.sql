@@ -4,36 +4,23 @@ USE `Playerms` ;
 
 SHOW Tables;
 
-#DROP TABLE PLAYER;
-#DROP TABLE CHARACTERSTATS;
-#DROP TABLE INVENTORY;
+DROP TABLE character_details;
+DROP TABLE INVENTORY;
+
+SELECT * FROM character_details;
+SELECT * FROM inventory;
+
+#This statement displays all items held by player one
+select * from inventory where character_id=1;
+
+#This statement displays all items held by player two
+select * from inventory where character_id=2;
+
+#This statement displays all items held by player three
+select * from inventory where character_id=3;
+
+#This statement displays all items held by player four
+select * from inventory where character_id=4;
 
 
-CREATE TABLE Player (
-	PlayerName VARCHAR(64) NOT NULL,
-    CharacterName VARCHAR(64) NOT NULL,
-    Gold BIGINT NOT NULL,
-    Inventory VARCHAR(64) NOT NULL,
-    PRIMARY KEY(PlayerName),
-    Foreign Key(CharacterName) REFERENCES CharacterStats(CharacterName)
-);
-
-CREATE TABLE CharacterStats (
-	CharacterName VARCHAR(64) NOT NULL,
-    InventoryID BIGINT AUTO_INCREMENT,
-    Gold BIGINT NOT NULL,
-    PRIMARY KEY(CharacterName),
-    Foreign Key(InventoryID) REFERENCES Inventory(InventoryID)
-);
-
-CREATE TABLE Inventory (
-	InventoryID BIGINT AUTO_INCREMENT,
-    ItemName VARCHAR(64) NOT NULL,
-    Cost BIGINT NOT NULL,
-    Quantity VARCHAR(64) NOT NULL,
-    PRIMARY KEY(InventoryID)
-);
-
-INSERT INTO Inventory(ItemName, Cost, Quantity)
-VALUES("Potion", 25, 5 );
 
