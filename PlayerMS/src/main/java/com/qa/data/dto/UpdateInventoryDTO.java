@@ -12,11 +12,9 @@ public class UpdateInventoryDTO {
 	private String itemName;
 	
 	@NotNull
-	@NotBlank
 	private int price;
 
 	@NotNull
-	@NotBlank
 	private int characterid;
 	
 	public String getItemName() {

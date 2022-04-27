@@ -12,11 +12,9 @@ public class NewInventoryDTO {
 	private String itemName;
 	
 	@NotNull
-	@NotBlank
 	private int price;
 	
 	@NotNull
-	@NotBlank
 	private int characterId;
 	
 	

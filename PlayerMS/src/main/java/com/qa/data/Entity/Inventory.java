@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -29,7 +28,6 @@ public class Inventory {
 	private String itemName;
 
 	@NotNull
-	@NotBlank
 	private int price;
 	
 	
@@ -38,6 +36,10 @@ public class Inventory {
 
 
 	private Player character;
+	
+	public Inventory() {
+		super();
+	}
 
 	public Inventory(String itemName, int price) {
 		super();
@@ -51,7 +53,6 @@ public class Inventory {
 		this.itemName = itemName;
 		this.price = price;
 		this.character = character;
-
 	}
 
 	public int getId() {

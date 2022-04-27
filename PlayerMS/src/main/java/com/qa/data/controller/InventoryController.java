@@ -1,5 +1,6 @@
 package com.qa.data.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 
@@ -17,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.qa.data.Entity.Player;
+import com.qa.data.Entity.Inventory;
 import com.qa.data.dto.InventoryDTO;
 import com.qa.data.dto.UpdateInventoryDTO;
 import com.qa.data.service.InventoryService;
@@ -54,9 +56,9 @@ public class InventoryController {
 		return new ResponseEntity<>(newInventory, headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping(path = "/{characterid}")
-	public ResponseEntity<InventoryDTO> updateInventory(@Valid @RequestBody UpdateInventoryDTO Inventory, @PathVariable(name = "characterid") int characterid) {
-		return ResponseEntity.ok(inventoryService.updateInventory(Inventory, characterid));
+	@PutMapping(path = "/{id}")
+	public ResponseEntity<InventoryDTO> updateInventory(@Valid @RequestBody UpdateInventoryDTO Inventory, @PathVariable(name = "id") int id) {
+		return ResponseEntity.ok(inventoryService.updateInventory(Inventory, id));
 	}
 	
 	@DeleteMapping(path = "/{id}")
