@@ -12,10 +12,9 @@
     <nav>
         <a id="toggle">MENU</a>
         <a class="nav-link " href="../index.html">HOME</a>
-        <a class="nav-link" href="./create.html">Create a Character</a>
-        <a class="nav-link" href="./read.html">Characters</a>
-        <a class="nav-link" href="./update.html">Update Inventory</a>
-        <a class="nav-link" href="./delete.html">Delete Items</a>
+        <a class="nav-link" href="create.html">Create a Character</a>
+        <a class="nav-link" href="read.html">Characters</a>
+        <a class="nav-link" href="readInventory.html">Inventory</a>
     </nav>
     
     <header>
@@ -28,8 +27,17 @@
             <h2>Status: <span id="status"></span></h2>
         </section>
         <main class="container">
-            <form id="data-form">                
-                <fieldset id="user-id-field">
+            <form id="data-form">
+                <fieldset id="request-type">
+                    <legend>Request type</legend>
+                    <label for="method">Type:</label>
+                    <select name="method" id="method">
+                        <option value="ALL">Read a list of users</option>
+                        <option value="ID">Read a user by their id</option>
+                    </select>
+                </fieldset>
+                
+                <fieldset id="user-id-field" class="hide">
                     <legend>User id</legend>
                     <label for="id">ID:</label>
                     <input type="number" name="id" id="id">
@@ -43,7 +51,7 @@
     </div>
 
     <footer>
-        <p><small>name here - Copyright &copy; 2022</small></p>
+        <p><small>Paul McFetridge &copy; 2022</small></p>
     </footer>
 
     <script src="../scripts/navbar.js"></script>
@@ -51,6 +59,6 @@
     <script src="../scripts/error-handler.js"></script>
     <script src="../scripts/status-handler.js"></script>
     <script src="../scripts/users/user.js"></script>
-    <script src="../scripts/users/read-comments.js"></script>
+    <script src="../scripts/users/read-user.js"></script>
 </body>
 </html>

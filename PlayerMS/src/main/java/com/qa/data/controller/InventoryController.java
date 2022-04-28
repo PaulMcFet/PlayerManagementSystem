@@ -44,8 +44,8 @@ public class InventoryController {
 	}
 	
 	@GetMapping(path = "/{characterid}")
-	public ResponseEntity<InventoryDTO> getInventory(@PathVariable(name = "characterid") int characterid) {
-		return ResponseEntity.ok(inventoryService.getInventory(characterid));
+	public ResponseEntity<List<InventoryDTO>> getInventorysByCharacterId(@PathVariable(name = "characterid") int characterid) {
+		return ResponseEntity.ok(inventoryService.getInventorysByCharacterId(characterid));
 	}
 	
 	@PostMapping

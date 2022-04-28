@@ -23,9 +23,9 @@
             if (response.ok) return response.json();
             else throw new Error('Uh oh, something went wrong...');
         })
-          .then(users => {
+          .then(character => {
             setStatus('RENDERING TABLE');
-            renderUserTable(users, dataTable);
+            renderUserTable(character, dataTable);
             setStatus('RESPONSE RENDERED INTO TABLE');
         })
           .catch(error => {
@@ -37,16 +37,16 @@
     function readById() {
         setStatus('PREPARING GET REQUEST');
 
-        fetch('http://localhost:8080/character/${id.value}', {
+        fetch(`http://localhost:8080/character/${id.value}`, {
             method: 'GET'
         }).then(response => {
             setStatus('RECEIVED RESPONSE');
             if (response.ok) return response.json();
             else throw new Error('Uh oh, something went wrong...');
         })
-          .then(user => {
+          .then(character => {
             setStatus('RENDERING TABLE');
-            renderUserTable([user], dataTable);
+            renderUserTable([character], dataTable);
             setStatus('RESPONSE RENDERED INTO TABLE');
         })
           .catch(error => {
@@ -55,9 +55,11 @@
         });
     }
 
+    // default initialisation
     readAll();
 
     requestSelector.addEventListener('change', function(event) {
+        // access the current element that we are adding an event to with 'this'
         if (this.value == 'ALL') {
             toggleIdVisibility(false);
         } else if (this.value == 'ID') {
@@ -66,7 +68,7 @@
     });
 
     dataForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // prevent default page refresh on form submission
         if (requestSelector.value == 'ALL') readAll();
         else if (requestSelector.value == 'ID') readById();
     });

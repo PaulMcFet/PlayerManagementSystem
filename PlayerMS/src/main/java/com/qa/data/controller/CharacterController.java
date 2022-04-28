@@ -53,17 +53,17 @@ public class CharacterController {
 	public ResponseEntity<CharacterDTO> createCharacter(@Valid @RequestBody NewCharacterDTO character) {
 		CharacterDTO newCharacter = service.createCharacter(character);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Location", "http://localhost:8080/user/" + newCharacter.getId());
+		headers.add("Location", "http://localhost:8080/character/" + newCharacter.getId());
 		return new ResponseEntity<>(newCharacter, headers, HttpStatus.CREATED);
 	}
 	
-
+	//Update/Replace existing Character
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<CharacterDTO> updateCharacter(@RequestBody NewCharacterDTO newCharacterDTO, @PathVariable(name = "id") int id) {
 		return ResponseEntity.ok(service.updateCharacter(newCharacterDTO, id));
 	}
 	
-
+	
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<?> deleteCharacter(@PathVariable(name = "id") int id) {
 		CharacterDTO deletedCharacter = service.getCharacter(id);

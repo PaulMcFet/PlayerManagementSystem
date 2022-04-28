@@ -12,14 +12,14 @@
     <nav>
         <a id="toggle">MENU</a>
         <a class="nav-link " href="../index.html">HOME</a>
-        <a class="nav-link" href="./create.html">Create a Character</a>
-        <a class="nav-link" href="./read.html">Characters</a>
-        <a class="nav-link" href="./update.html">Update Inventory</a>
-        <a class="nav-link" href="./delete.html">Delete Items</a>
+        <a class="nav-link" href="create.html">Create a Character</a>
+        <a class="nav-link" href="read.html">Characters</a>
+        <a class="nav-link" href="readInventory.html">Inventory</a>
     </nav>
     
     <header>
-        <h1>See All Characters</h1>
+        <h1>Party Inventory</h1>
+        <p>Manage information concerning user accounts</p>
     </header>
     
     <div class="container">
@@ -31,16 +31,9 @@
                 <fieldset id="request-type">
                     <legend>Request type</legend>
                     <label for="method">Type:</label>
-                    <!-- the select element is for a drop down list -->
                     <select name="method" id="method">
-                        <!-- add nested option elements for each option you would like
-                             in the dropdown list
-                             - the selected option will have its value attribute submitted
-                               as a key value pair for the select attribute name,
-                               i.e, name: 'ALL' or name: 'ID'
-                        -->
-                        <option value="ALL">Read a list of characters</option>
-                        <option value="ID">Read a character by their id</option>
+                        <option value="ALL">Read a full inventory</option>
+                        <option value="ID">Read a characters inventory by id</option>
                     </select>
                 </fieldset>
                 
@@ -65,7 +58,7 @@
     <script src="../scripts/table-manager.js"></script>
     <script src="../scripts/error-handler.js"></script>
     <script src="../scripts/status-handler.js"></script>
-    <script src="../scripts/users/user.js"></script>
-    <script src="../scripts/users/read-user.js"></script>
+    <script src="../scripts/users/Inventory.js"></script>
+    <script src="../scripts/users/read-inventory.js"></script>
 </body>
 </html>

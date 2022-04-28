@@ -6,19 +6,14 @@ function Player(Name)
     return output;
 
 
-function Character(CharacterName, CharacterClass, SGold, Inventory) {
-    console.log()
-    this.CharacterName = CharacterName;
-    this.CharacterClass = CharacterClass;
-    this.SGold = SGold;
-    this.Inventory = new Inventory;
-    this.toString = function() {
-        let output = `${CharacterName} "The" \n${CharacterClass} "With" \n${SGold}`;
-        return output;
-    }
-}
+    function character(characterName, playerName, playerClass, gold, id = null) {
+        this.characterName = characterName;
+        this.playerName = playerName;
+        this.playerClass = playerClass;
+        this.gold = gold;
+        this.id = id;
 
-const userHeaders = ['id', 'character_name', 'gold', 'player_class', 'player_name'];
+const userHeaders = ['id', 'characterName', 'playerName', 'playerClass', 'gold'];
 
 // containerElement is the element we want to render the table into
 // users is an array of objects representing user data

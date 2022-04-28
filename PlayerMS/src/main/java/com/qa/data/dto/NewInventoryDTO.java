@@ -12,6 +12,9 @@ public class NewInventoryDTO {
 	private String itemName;
 	
 	@NotNull
+	private int id;
+	
+	@NotNull
 	private int price;
 	
 	@NotNull
@@ -22,8 +25,9 @@ public class NewInventoryDTO {
 		
 	}
 
-	public NewInventoryDTO(String itemName, int price, int characterId) {
+	public NewInventoryDTO(int id, String itemName, int price, int characterId) {
 		super();
+		this.id = id;
 		this.itemName = itemName;
 		this.price = price;
 		this.characterId = characterId;
@@ -35,6 +39,14 @@ public class NewInventoryDTO {
 
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getPrice() {
@@ -55,7 +67,7 @@ public class NewInventoryDTO {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(characterId, itemName, price);
+		return Objects.hash(characterId, id, itemName, price);
 	}
 
 	@Override
@@ -67,13 +79,15 @@ public class NewInventoryDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		NewInventoryDTO other = (NewInventoryDTO) obj;
-		return characterId == other.characterId && Objects.equals(itemName, other.itemName) && price == other.price;
+		return characterId == other.characterId && id == other.id && Objects.equals(itemName, other.itemName)
+				&& price == other.price;
 	}
 
 	@Override
 	public String toString() {
-		return "NewInventoryDTO [getItemName()=" + getItemName() + ", getPrice()=" + getPrice() + ", getCharacterId()="
-				+ getCharacterId() + "]";
+		return "NewInventoryDTO [getItemName()=" + getItemName() + ", getId()=" + getId() + ", getPrice()=" + getPrice()
+				+ ", getCharacterId()=" + getCharacterId() + ", hashCode()=" + hashCode() + "]";
 	}
+	
 
 }
