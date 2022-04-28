@@ -11,28 +11,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qa.data.Entity.Inventory;
+import com.qa.data.Entity.Player;
+import com.qa.data.repo.CharacterRepository;
 import com.qa.data.repo.InventoryRepository;
 import com.qa.data.dto.NewInventoryDTO;
-import com.qa.data.dto.NewCharacterDTO;
 import com.qa.data.dto.InventoryDTO;
 import com.qa.data.dto.UpdateInventoryDTO;
-import com.qa.data.dto.CharacterDTO;
+
 
 @Service
 public class InventoryService {
-
-	private InventoryRepository InventoryRepository;
+	
+	private CharacterRepository characterRepository;
+	private InventoryRepository inventoryRepository;
 	private ModelMapper modelMapper;
 
 	@Autowired
-	public InventoryService(InventoryRepository InventoryRepository, ModelMapper modelMapper) {
+	public InventoryService(InventoryRepository InventoryRepository, CharacterRepository characterRepository, ModelMapper modelMapper) {
 		super();
-		this.InventoryRepository = InventoryRepository;
+		this.inventoryRepository = InventoryRepository;
+		this.characterRepository = characterRepository;
 		this.modelMapper = modelMapper;
 	}
 
 	public List<InventoryDTO> getInventorys() {
-		List<Inventory> Inventorys = InventoryRepository.findAll();
+		List<Inventory> Inventorys = inventoryRepository.findAll();
 		List<InventoryDTO> dtos = new ArrayList<>();
 		
 		for (Inventory Inventory : Inventorys) {
@@ -42,9 +45,8 @@ public class InventoryService {
 	}
 	
 	public List<InventoryDTO> getInventorysByCharacterId(int id) {
-		List<Inventory> Inventorys = InventoryRepository.findByCharacterId(id);
+		List<Inventory> Inventorys = inventoryRepository.findByCharacterId(id);
 		List<InventoryDTO> dtos = new ArrayList<>();
-		
 		for (Inventory Inventory : Inventorys) {
 			dtos.add(this.toDTO(Inventory));
 		}
@@ -52,8 +54,7 @@ public class InventoryService {
 	}
 	
 	public InventoryDTO getInventory(int id) {
-		Optional<Inventory> Inventory = InventoryRepository.findById(id);
-		
+		Optional<Inventory> Inventory = inventoryRepository.findById(id);
 		if (Inventory.isPresent()) {
 			return this.toDTO(Inventory.get());
 		}
@@ -62,23 +63,30 @@ public class InventoryService {
 	
 	public InventoryDTO createInventory(NewInventoryDTO Inventory) {
 		Inventory toSave = this.modelMapper.map(Inventory, Inventory.class);
-		Inventory newInventory = InventoryRepository.save(toSave);
+		Optional<Player> opt = characterRepository.findById(Inventory.getCharacterId());
+		
+		Player player = opt.orElse(null);
+		if (player == null) throw new EntityNotFoundException();
+		// player does exist, set them on the inventory to save
+		toSave.setCharacter(player);
+		
+		Inventory newInventory = inventoryRepository.save(toSave);
 		return this.toDTO(newInventory);
 	}
 	
 	public InventoryDTO updateInventory(UpdateInventoryDTO InventoryDTO, int id) {
-		if (InventoryRepository.existsById(id)) {
-			Inventory savedInventory = InventoryRepository.getById(id);
+		if (inventoryRepository.existsById(id)) {
+			Inventory savedInventory = inventoryRepository.getById(id);
 			savedInventory.setItemName(InventoryDTO.getItemName());
-			savedInventory.setValue(InventoryDTO.getValue());
-			return this.toDTO(InventoryRepository.save(savedInventory));
+			savedInventory.setPrice(InventoryDTO.getPrice());
+			return this.toDTO(inventoryRepository.save(savedInventory));
 		}
 		throw new EntityNotFoundException("Inventory not found with id " + id);
 	}
 	
 	public void deleteInventory(int id) {
-		if (InventoryRepository.existsById(id)) {
-			InventoryRepository.deleteById(id);
+		if (inventoryRepository.existsById(id)) {
+			inventoryRepository.deleteById(id);
 			return;
 		}
 		throw new EntityNotFoundException("Inventory not found with id " + id); 

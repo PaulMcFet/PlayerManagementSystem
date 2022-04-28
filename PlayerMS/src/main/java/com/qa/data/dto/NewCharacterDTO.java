@@ -18,6 +18,9 @@ public class NewCharacterDTO {
 	private String playerClass;
 	
 	@NotNull
+	private String playerName;
+	
+	@NotNull
 	private int gold;
 	
 	
@@ -25,42 +28,62 @@ public class NewCharacterDTO {
 		super();
 	}
 
-	public String getcharacterName() {
+
+	public String getCharacterName() {
 		return characterName;
 	}
 
-	public void setcharacterName(String characterName) {
+
+	public void setCharacterName(String characterName) {
 		this.characterName = characterName;
 	}
+
 
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public String getplayerClass() {
+
+
+	public String getPlayerClass() {
 		return playerClass;
 	}
 
-	public void setplayerClass(String playerClass) {
+
+	public void setPlayerClass(String playerClass) {
 		this.playerClass = playerClass;
 	}
 
-	public int getgold() {
+
+	public String getPlayerName() {
+		return playerName;
+	}
+
+
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
+	}
+
+
+	public int getGold() {
 		return gold;
 	}
 
-	public void setgold(int gold) {
+
+	public void setGold(int gold) {
 		this.gold = gold;
 	}
 
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, characterName);
+		return Objects.hash(characterName, gold, id, playerClass, playerName);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -71,9 +94,15 @@ public class NewCharacterDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		NewCharacterDTO other = (NewCharacterDTO) obj;
-		return Objects.equals(id, other.id) && Objects.equals(characterName, other.characterName);
+		return Objects.equals(characterName, other.characterName) && gold == other.gold && id == other.id
+				&& Objects.equals(playerClass, other.playerClass) && Objects.equals(playerName, other.playerName);
 	}
 
-	
-	
+
+	@Override
+	public String toString() {
+		return "NewCharacterDTO [getCharacterName()=" + getCharacterName() + ", getId()=" + getId()
+				+ ", getPlayerClass()=" + getPlayerClass() + ", getPlayerName()=" + getPlayerName() + ", getGold()="
+				+ getGold() + ", hashCode()=" + hashCode() + "]";
+	}
 }

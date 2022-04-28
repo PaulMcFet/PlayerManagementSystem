@@ -2,14 +2,14 @@ package com.qa.data.Entity;
 
 
 import java.util.Objects;
-
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -38,26 +38,22 @@ public class Player {
 	private String playerClass;
 	private int gold;
 	
-	
-	@OneToOne(mappedBy = "character", targetEntity = Inventory.class, fetch = FetchType.LAZY)
-	private Inventory inventory;
-
+	@OneToMany(mappedBy = "character", targetEntity = Inventory.class, fetch = FetchType.LAZY)
+	private List<Inventory> inventory;
 		
 	protected Player() {
 		super();
 	}
 
-
 	public Player(int id,
 			@NotNull @NotBlank @Size(min = 2, max = 16, message = "Character name must have at least 2 characters, but no more than 16") String characterName,
-			@NotNull @NotBlank String playerName, @NotNull String playerClass, int gold, Inventory inventory) {
+			@NotNull @NotBlank String playerName, @NotNull String playerClass, int gold) {
 		super();
 		this.id = id;
 		this.characterName = characterName;
 		this.playerName = playerName;
 		this.playerClass = playerClass;
 		this.gold = gold;
-		this.inventory = inventory;
 	}
 
 
@@ -110,20 +106,9 @@ public class Player {
 		this.gold = gold;
 	}
 
-
-	public Inventory getInventory() {
-		return inventory;
-	}
-
-
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
-	}
-
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(characterName, gold, id, inventory, playerClass, playerName);
+		return Objects.hash(characterName, gold, id, playerClass, playerName);
 	}
 
 
@@ -137,7 +122,7 @@ public class Player {
 			return false;
 		Player other = (Player) obj;
 		return Objects.equals(characterName, other.characterName) && gold == other.gold && id == other.id
-				&& Objects.equals(inventory, other.inventory) && Objects.equals(playerClass, other.playerClass)
+				&& Objects.equals(playerClass, other.playerClass)
 				&& Objects.equals(playerName, other.playerName);
 	}
 
@@ -145,7 +130,7 @@ public class Player {
 	@Override
 	public String toString() {
 		return "Player [id=" + id + ", characterName=" + characterName + ", playerName=" + playerName + ", playerClass="
-				+ playerClass + ", gold=" + gold + ", inventory=" + inventory + "]";
+				+ playerClass + ", gold=" + gold +"]";
 	}
 	
 	

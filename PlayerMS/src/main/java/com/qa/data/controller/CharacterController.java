@@ -22,13 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qa.data.Entity.Player;
 import com.qa.data.service.CharacterService;
 import com.qa.data.dto.CharacterDTO;
+import com.qa.data.dto.NewCharacterDTO;
 
 @RestController
 @RequestMapping(path = "/character")
 @CrossOrigin("*")
 public class CharacterController {
-	private static int COUNTER = 1;
-	private List<Player> characters = new ArrayList<Player>();
 
 	private CharacterService service;
 	
@@ -45,56 +44,30 @@ public class CharacterController {
 	
 	//Read by ID
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Player> getCharacter(@PathVariable(name = "id") int id) {
-		for (int i = 0; i < characters.size(); i++) {
-			Player current = this.characters.get(i);
-			if (current.getId() == id) {
-				return new ResponseEntity<Player>(current, HttpStatus.OK);
-			}
-		}
-		return new ResponseEntity<Player>(HttpStatus.NOT_FOUND);
+	public ResponseEntity<CharacterDTO> getUser(@PathVariable(name = "id") int id) {
+		CharacterDTO character = service.getCharacter(id);
+		return new ResponseEntity<>(character, HttpStatus.OK);
 	}
-	
-	
-	//Read Inventory by ID
-//	// TODO
-//	@GetMapping(path = "/{id}/posts")
-//	public ResponseEntity<List<PostDTO>> getUserPosts(@PathVariable(name = "id") int userId) {
-//		return ResponseEntity.ok(userService.getUserPosts(userId));
-//		// TODO
-		
 		
 	@PostMapping
-	public ResponseEntity<Player> createCharacter(@Valid @RequestBody Player character) {
-		int id = COUNTER++;
-		character.setId(id);
-		characters.add(character);
+	public ResponseEntity<CharacterDTO> createCharacter(@Valid @RequestBody NewCharacterDTO character) {
+		CharacterDTO newCharacter = service.createCharacter(character);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Location", "http://localhost:8080/character/" + id);
-		return new ResponseEntity<Player>(character, headers, HttpStatus.CREATED);
+		headers.add("Location", "http://localhost:8080/user/" + newCharacter.getId());
+		return new ResponseEntity<>(newCharacter, headers, HttpStatus.CREATED);
 	}
+	
 
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Player> updateCharacter(@RequestBody Player character, int id,
-			@PathVariable(name = "CharacterName") String CharacterName) {
-		Player savedCharacter = null;
-		for (int i = 0; i < characters.size(); i++) {
-			if (this.characters.get(i).getId() == id) {
-				savedCharacter = this.characters.get(i);
-			}
-		}
-		if (savedCharacter != null) {
-			savedCharacter.setCharacterName(character.getCharacterName());
-			return ResponseEntity.ok(savedCharacter);
-		}
-		return ResponseEntity.notFound().build();
+	public ResponseEntity<CharacterDTO> updateCharacter(@RequestBody NewCharacterDTO newCharacterDTO, @PathVariable(name = "id") int id) {
+		return ResponseEntity.ok(service.updateCharacter(newCharacterDTO, id));
 	}
+	
 
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<?> deleteCharacter(@PathVariable(name = "id") int id) {
 		CharacterDTO deletedCharacter = service.getCharacter(id);
 		service.deleteCharacter(id);
 		return ResponseEntity.ok(deletedCharacter);
-	
 	}
 }

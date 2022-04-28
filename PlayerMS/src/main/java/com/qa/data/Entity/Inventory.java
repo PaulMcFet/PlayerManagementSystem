@@ -9,8 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -26,36 +25,33 @@ public class Inventory {
 
 	@NotNull
 	@NotBlank
-	private String ItemName;
+	private String itemName;
 
 	@NotNull
-	@NotBlank
-	private int Value;
-
-	@OneToOne(optional = true, fetch = FetchType.LAZY)
+	private int price;
+	
+	
+	@ManyToOne(optional = true, fetch = FetchType.LAZY)
 	@JoinColumn(name = "character_id", referencedColumnName = "id")
+
+
 	private Player character;
-
-	public Inventory(String ItemName, int Value) {
+	
+	public Inventory() {
 		super();
-		this.ItemName = ItemName;
-		this.Value = Value;
-
 	}
 
-	public Inventory(String ItemName, int Value, Player character) {
+	public Inventory(String itemName, int price) {
 		super();
-		this.ItemName = ItemName;
-		this.Value = Value;
-		this.character = character;
-
+		this.itemName = itemName;
+		this.price = price;
 	}
 
-	public Inventory(int id, String ItemName, int Value, Player character) {
+	public Inventory(int id, String itemName, int price, Player character) {
 		super();
 		this.id = id;
-		this.ItemName = ItemName;
-		this.Value = Value;
+		this.itemName = itemName;
+		this.price = price;
 		this.character = character;
 	}
 
@@ -68,19 +64,19 @@ public class Inventory {
 	}
 
 	public String getItemName() {
-		return ItemName;
+		return itemName;
 	}
 
-	public void setItemName(String ItemName) {
-		this.ItemName = ItemName;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 
-	public int getValue() {
-		return Value;
+	public int getPrice() {
+		return price;
 	}
 
-	public void setValue(int Value) {
-		this.Value = Value;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	public Player getCharacter() {
@@ -93,12 +89,12 @@ public class Inventory {
 
 	@Override
 	public String toString() {
-		return "Inventory [id=" + id + ", ItemName=" + ItemName + ", Value=" + Value + ", character=" + character + "]";
+		return "Inventory [itemName=" + itemName + ", price=" + price + ", character=" + character + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Value, id, ItemName, character);
+		return Objects.hash(price, itemName, character);
 	}
 
 	@Override
@@ -110,7 +106,7 @@ public class Inventory {
 		if (getClass() != obj.getClass())
 			return false;
 		Inventory other = (Inventory) obj;
-		return Objects.equals(Value, other.Value) && id == other.id && Objects.equals(ItemName, other.ItemName)
+		return Objects.equals(price, other.price) && Objects.equals(itemName, other.itemName)
 				&& Objects.equals(character, other.character);
 	}
 

@@ -59,7 +59,7 @@ public class CharacterService {
 	public CharacterDTO updateCharacter(NewCharacterDTO character, int id) {
 		if (CharacterRepository.existsById(id)) {
 			Player savedCharacter = CharacterRepository.getById(id);
-			savedCharacter.setCharacterName(character.getcharacterName());
+			savedCharacter.setCharacterName(character.getCharacterName());
 			return this.toDTO(savedCharacter);
 		}
 		throw new EntityNotFoundException("Character not found with id " + id);
@@ -80,7 +80,7 @@ public class CharacterService {
 
 	public List<InventoryDTO> getCharacterInventorys(int Id) {
 		Player character_details = CharacterRepository.getById(Id);
-		List<InventoryDTO> inventorys = inventoryService.getinventorysByCharacterId(Id);
+		List<InventoryDTO> inventorys = inventoryService.getInventorysByCharacterId(Id);
 		inventorys.forEach(inventory -> inventory.setCharacterDTO(new CharacterDTO(character_details)));
 		return inventorys;
 	}
