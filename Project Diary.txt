@@ -19,7 +19,7 @@ Thursday:
 -Sought Feedback from Morgan relating to ideas.
 ------------------------------------------------------------------------------------------------------------------------
 
-Firday:
+Friday:
 Created initial ERD and created some basic MySQL to help visualise the end project. 
 
 TTDT
