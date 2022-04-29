@@ -19,7 +19,7 @@ Thursday:
 -Sought Feedback from Morgan relating to ideas.
 ------------------------------------------------------------------------------------------------------------------------
 
-Firday:
+Friday:
 Created initial ERD and created some basic MySQL to help visualise the end project. 
 
 TTDT
@@ -141,7 +141,21 @@ At this point I am slightly worried that I may not have a fully completed projec
 complete focus, a solid stream of coffee from my kitchen to me and zero distractions.
 
 ------------------------------------------------------------------------------------------------------------------------
+Thursday 
 
+It's currently 10:25PM and I've not moved from my chair all day besides to eat and go the toilet. 
+
+BUT at 10:20 today my front end finally worked as designed. 
+
+The only things I need to work on are 
+A presentation for tomorrow 
+and a delete/update method, however at this point I believe they're going to be stretch goals. 
+
+I'm going to aim to have my presentation and example product prepped for tomorrow when I present at 11:30am
+and then spend the rest of the day on implementing a delete/update method. 
+
+This past week has been amazing for my technical knowledge. I've learned more from this project that I ever expected to learn in such a shot time, 
+I hope we can carry on getting hands on experience like this.
 
 
 

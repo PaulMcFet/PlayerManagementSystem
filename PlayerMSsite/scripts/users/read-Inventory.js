@@ -6,7 +6,7 @@
 function readById() {
     setStatus('PREPARING GET REQUEST');
 
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id.value}/comments`, {
+    fetch(`http://localhost:8080/Inventory`, {
         method: 'GET'
     }).then(response => {
         setStatus('RECEIVED RESPONSE');

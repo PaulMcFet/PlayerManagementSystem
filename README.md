@@ -1,20 +1,7 @@
 
-# PlayerManagementSystem
-
-
-                       ^\    ^                  
-                      / \\  / \                 
-                     /.  \\/   \      |\___/|   
-  *----*           / / |  \\    \  __/  O  O\   
-  |   /          /  /  |   \\    \_\/  \     \     
- / /\/         /   /   |    \\   _\/    '@___@      
-/  /         /    /    |     \\ _\/       |U
-|  |       /     /     |      \\\/        |
-\  |     /_     /      |       \\  )   \ _|_
-\   \       ~-./_ _    |    .- ; (  \_ _ _,\'
-~    ~.           .-~-.|.-*      _        {-,
- \      ~-. _ .-~                 \      /\'
-  \                   }            {   .*
-   ~.                 '-/        /.-~----.
-     ~- _             /        >..----.\\\
-         ~ - - - - ^}_ _ _ _ _ _ _.-\\\
+Paul's Player Management System for use in games such as; 
+Dungeons and Dragons, 
+ShadowRun, 
+Catan, 
+Hilt//Blade 
+or many, many more.

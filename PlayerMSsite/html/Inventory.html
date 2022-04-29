@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav>
+        <a id="toggle">MENU</a>
+        <a class="nav-link " href="../index.html">HOME</a>
+        <a class="nav-link" href="./createCharacter.html">CREATE A CHARACTER</a>
+        <a class="nav-link" href="./readCharacters.html">CHARACTERS</a>
+        <a class="nav-link" href="./Inventory.html">CHARACTER INVENTORY</a>
+        <a class="nav-link" href="./delete.html">UPDATE INVENTORY</a>
+    </nav>
+    
+    <header>
+        <h1>User profile</h1>
+        <p>Manage information concerning user accounts</p>
+    </header>
+    
+    <div class="container">
+        <section id="banner">
+            <h2>Status: <span id="status"></span></h2>
+        </section>
+        <main class="container">
+            <form id="data-form">                
+                <fieldset id="user-id-field">
+                    <legend>User id</legend>
+                    <label for="id">ID:</label>
+                    <input type="number" name="id" id="id">
+                </fieldset>
+                <button type="submit" style="width: 100%;">Submit</button>
+            </form>
+            <div id="data-table">
+                
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p><small>name here - Copyright &copy; 2022</small></p>
+    </footer>
+
+    <script src="../scripts/navbar.js"></script>
+    <script src="../scripts/table-manager.js"></script>
+    <script src="../scripts/error-handler.js"></script>
+    <script src="../scripts/status-handler.js"></script>
+    <script src="../scripts/users/user.js"></script>
+    <script src="../scripts/users/read-comments.js"></script>
+</body>
+</html>

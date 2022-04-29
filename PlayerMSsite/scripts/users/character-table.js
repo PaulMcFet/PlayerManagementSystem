@@ -1,13 +1,11 @@
 (function() {
-    const requestManager = new RequestManager('https://jsonplaceholder.typicode.com/users');
+    const requestManager = new RequestManager('http://localhost:8080/character');
     const tableManager = new TableManager();
 
     const dataTable = document.querySelector('#data-table');
     const dataForm = document.querySelector('#data-form');
     const requestSelector = dataForm.querySelector('#action');
     const generalInfo = dataForm.querySelector('#general-info');
-    const addressInfo = dataForm.querySelector('#address-details');
-    const companyInfo = dataForm.querySelector('#company-details');
     const id = dataForm.querySelector('#id');
 
     let users = [];
@@ -41,10 +39,8 @@
     }
 
     function createUserFromFormObj(dataObject) {
-      const address = new Address(dataObject.street, dataObject.city, dataObject.suite, dataObject.zipcode, new Geolatitude(dataObject.lat, dataObject.lng));
-      const company = new Company(dataObject['company-name'], dataObject.bs, dataObject['catch-phrase']);
-      const user = new User(dataObject.name, dataObject.username, dataObject.email, dataObject.phone, address, dataObject.website, company, dataObject.id);
-      return user;
+      const character = new Character(dataObject.CharacterName, dataObject.CharacterClass, dataObject.Gold, dataObject.PlayerName);
+      return character;
     }
 
     function handleFormSubmission(event) {
@@ -66,7 +62,7 @@
         case 'POST':
           user = createUserFromFormObj(dataObject);
           requestManager.setRequestMethod('POST');
-          requestManager.setPayload(JSON.stringify(user));
+          requestManager.setPayload(JSON.stringify(character));
           requestManager.setHeaders({
             'Content-type': 'application/json'
           });
@@ -91,11 +87,8 @@
                   })
                   .catch(err => handleError(err));
 
-    // handle form submissions
-    // - calls handleFormSubmission(event) when the submit button is clicked
     dataForm.addEventListener('submit', handleFormSubmission);
 
-    // change form appearance dependent on option selected
     requestSelector.addEventListener('change', (event) => {
       const select = event.currentTarget;
       

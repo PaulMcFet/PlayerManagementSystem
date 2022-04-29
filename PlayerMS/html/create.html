@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav>
+        <a id="toggle">MENU</a>
+        <a class="nav-link " href="../index.html">HOME</a>
+        <a class="nav-link" href="create.html">Create a Character</a>
+        <a class="nav-link" href="read.html">Characters</a>
+        <a class="nav-link" href="readInventory.html">Inventory</a>
+    </nav>
+    
+    <header>
+        <h1>Create your character</h1>
+        <p>Create character below</p>
+    </header>
+    
+    <div class="container">
+        <section id="banner" class="container">
+            <h2>Status: <span id="status"></span></h2>
+        </section>
+        <main class="container">
+            <div id="data-table">
+                
+            </div>
+            <h2>Create a Character:</h2>
+            <form id="data-form" class="container">
+                <fieldset id="general-info">
+                    <legend>Player Details</legend>
+
+                    <label for="playerName">Player Name:</label>
+                    <input type="text" id="playerName" playerName="playerName"><br>
+
+                </fieldset>
+
+                <fieldset id="Character-details">
+                    <legend>Character Details</legend>
+
+                    <label for="characterName">Charcter Name:</label>
+                    <input type="text" id="CharacterName" name="CharacterName"><br>
+
+                    <label for="characterClass">Character Class:</label> <br>
+                    
+                    <label for="Fighter"><img src="https://i.ibb.co/dcpTNTr/Fighter.png" alt="Fighter" border="0" width="24" height="24">Fighter</a></label>
+                    <input type="radio" id="CharacterClass" name="CharacterClass"><br>
+                    <label for="Paladin"><img src="https://i.ibb.co/mHgT4vs/Paladin.png" alt="Paladin" border="0" width="24" height="24">Paladin</a></label>
+                    <input type="radio" id="CharacterClass" name="CharacterClass"><br>
+                    <label for="Wizard"><img src="https://i.ibb.co/fx8HFZV/Bard.png" alt="Bard" border="0" width="24" height="24">Bard</a></label>
+                    <input type="radio" id="CharacterClass" name="CharacterClass"><br>
+                    <label for="Bard"><img src="https://i.ibb.co/HhZBTnz/Wizard.png" alt="Wizard" border="0" width="24" height="24">Wizard</a></label>
+                    <input type="radio" id="CharacterClass" name="CharacterClass"><br>
+
+                    <label for="Gold">Starting Gold:</label>
+                    <input type="text" id="SGold" name="SGold"><br>
+
+                </fieldset>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+    </div>
+
+    <footer>
+        <p><small>Paul McFetridge &copy; 2022</small></p>
+    </footer>
+
+    <script src="../scripts/navbar.js"></script>
+    <script src="../scripts/table-manager.js"></script>
+    <script src="../scripts/error-handler.js"></script>
+    <script src="../scripts/status-handler.js"></script>
+    <script src="../scripts/users/user.js"></script>
+    <script src="../scripts/users/create-user.js"></script>
+</body>
+</html>

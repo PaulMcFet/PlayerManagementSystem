@@ -67,7 +67,7 @@ public class InventoryService {
 		
 		Player player = opt.orElse(null);
 		if (player == null) throw new EntityNotFoundException();
-		// player does exist, set them on the inventory to save
+
 		toSave.setCharacter(player);
 		
 		Inventory newInventory = inventoryRepository.save(toSave);
