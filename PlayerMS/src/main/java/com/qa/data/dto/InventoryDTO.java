@@ -8,18 +8,18 @@ public class InventoryDTO {
 	private int characterid;
 	private String itemName;
 	private int price;
-	private CharacterDTO characterDTO;
+	private CharacterDTO character;
 	
 	protected InventoryDTO() {
 	}
 
-	public InventoryDTO(int id, int characterid, String itemName, int price, CharacterDTO characterDTO) {
+	public InventoryDTO(int id, int characterid, String itemName, int price, CharacterDTO character) {
 		super();
 		this.id = id;
 		this.characterid = characterid;
 		this.itemName = itemName;
 		this.price = price;
-		this.characterDTO = characterDTO;
+		this.character = character;
 	}
 
 	public int getId() {
@@ -54,17 +54,17 @@ public class InventoryDTO {
 		this.price = price;
 	}
 
-	public CharacterDTO getCharacterDTO() {
-		return characterDTO;
+	public CharacterDTO getCharacter() {
+		return character;
 	}
 
-	public void setCharacterDTO(CharacterDTO characterDTO) {
-		this.characterDTO = characterDTO;
+	public void setCharacter(CharacterDTO character) {
+		this.character = character;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(characterDTO, characterid, id, itemName, price);
+		return Objects.hash(character, characterid, id, itemName, price);
 	}
 
 	@Override
@@ -76,14 +76,14 @@ public class InventoryDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		InventoryDTO other = (InventoryDTO) obj;
-		return Objects.equals(characterDTO, other.characterDTO) && characterid == other.characterid && id == other.id
+		return Objects.equals(character, other.character) && characterid == other.characterid && id == other.id
 				&& Objects.equals(itemName, other.itemName) && price == other.price;
 	}
 
 	@Override
 	public String toString() {
 		return "InventoryDTO [Id()=" + getId() + ", character Id()=" + getcharacterId() + ", Item Name()="
-				+ getItemName() + ", Price()=" + getPrice() + ", CharacterDTO()=" + getCharacterDTO()
+				+ getItemName() + ", Price()=" + getPrice() + ", character()=" + getCharacter()
 				+ "]";
 	}	
 }

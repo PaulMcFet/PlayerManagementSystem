@@ -81,7 +81,7 @@ public class CharacterService {
 	public List<InventoryDTO> getCharacterInventorys(int Id) {
 		Player character_details = CharacterRepository.getById(Id);
 		List<InventoryDTO> inventorys = inventoryService.getInventorysByCharacterId(Id);
-		inventorys.forEach(inventory -> inventory.setCharacterDTO(new CharacterDTO(character_details)));
+		inventorys.forEach(inventory -> inventory.setCharacter(new CharacterDTO(character_details)));
 		return inventorys;
 	}
 }
