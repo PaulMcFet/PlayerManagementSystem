@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="..\..\hamburgers\dist\hamburgers.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,11 @@
 </head>
 <body>
     <nav>
-        <a id="toggle">MENU</a>
+        <a id="toggle"><button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button></a>
         <a class="nav-link " href="index.html">HOME</a>
         <a class="nav-link" href="html/createCharacter.html">CREATE A CHARACTER</a>
         <a class="nav-link" href="html/readCharacters.html">CHARACTERS</a>
@@ -28,7 +33,7 @@
             <h2>Home Page</h2>
             <article>
                 <h3></h3>
-                <a href="html/createCharacter.html"><img src="..\images\6545874.png" alt="d20" border="0" height = "80" width="80"></a>
+                <a href="html/createCharacter.html"><img src="..\images\6545874.png" alt="d20" border="0" height = "80" width="80"class="d20image"></a>
                 <p>
                   Welcome to Paul's D&D Character creator/management system
                   Get started by clicking on the D20 above!
